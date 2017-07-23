@@ -8,7 +8,11 @@ buildscript {
         jcenter()
     }
     dependencies {
+<<<<<<< Updated upstream
         classpath 'com.android.tools.build:gradle:2.3.3'
+=======
+        classpath 'com.android.tools.build:gradle:2.3.0'
+>>>>>>> Stashed changes
     }
 }
 
