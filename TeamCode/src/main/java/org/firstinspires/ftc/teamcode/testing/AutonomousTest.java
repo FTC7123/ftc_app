@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.hardware.components.TwoMotorTankRobotMovements;
+import org.firstinspires.ftc.teamcode.hardware.components.TMTRDriveControls;
 import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
 
 /**
@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
 public class AutonomousTest extends LinearOpMode {
 
     public void runOpMode() throws InterruptedException{
-        TwoMotorTankRobotMovements robot = new TwoMotorTankRobotMovements();
+        TMTRDriveControls robot = new TMTRDriveControls();
         robot.initialize(hardwareMap, this);
 
         robot.drive(1 , 1);

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.hardware.components;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
@@ -9,9 +10,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
  * Created by andre on 7/23/2017.
  */
 
-public class TwoMotorTankRobotMovements extends TwoMotorTankRobot {
-
-    LinearOpMode opMode;
+public class TMTRDriveControls extends TwoMotorTankRobot {
 
     TwoMotorTankRobot robot;
 
