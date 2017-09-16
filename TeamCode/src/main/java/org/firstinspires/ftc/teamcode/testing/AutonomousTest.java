@@ -12,12 +12,12 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
  */
 @Autonomous (name = "Autonomous Testing")
 public class AutonomousTest extends LinearOpMode {
+    @Override
 
     public void runOpMode() throws InterruptedException{
         TMTRDriveControls robot = new TMTRDriveControls();
         robot.initialize(hardwareMap, this);
 
-        robot.drive(1 , 1);
+        robot.drive(2);
     }
-
 }
