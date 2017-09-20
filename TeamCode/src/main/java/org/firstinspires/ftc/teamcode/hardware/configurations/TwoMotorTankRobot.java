@@ -20,5 +20,6 @@ public class TwoMotorTankRobot{
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
 
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 }
