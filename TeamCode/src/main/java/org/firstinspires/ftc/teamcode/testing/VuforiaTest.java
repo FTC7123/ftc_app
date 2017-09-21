@@ -46,7 +46,7 @@ public class VuforiaTest extends LinearOpMode {
                 telemetry.addData("Vumark", "%s visible", vuMark);
                 telemetry.update();
 
-                //Assigns the each target a number so we can use this in other classes
+                //Assigns each of the targets a number so we can use this in other classes
                 if (vuMark.equals(RelicRecoveryVuMark.LEFT)){
                     targetNumber = 1;
                 } else if (vuMark.equals(RelicRecoveryVuMark.CENTER)){
