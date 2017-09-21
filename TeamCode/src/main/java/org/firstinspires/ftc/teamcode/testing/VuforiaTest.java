@@ -17,6 +17,8 @@ public class VuforiaTest extends LinearOpMode {
 
     VuforiaLocalizer vuforia;
 
+    public int targetNumber = 0;
+
     @Override
     public void runOpMode() {
 
@@ -34,6 +36,8 @@ public class VuforiaTest extends LinearOpMode {
 
         waitForStart();
 
+
+
         relicTrackables.activate();
 
         while (opModeIsActive()){
@@ -41,6 +45,14 @@ public class VuforiaTest extends LinearOpMode {
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                 telemetry.addData("Vumark", "%s visible", vuMark);
                 telemetry.update();
+
+                //Assigns the each target a number so we can use this in other classes
+                if (vuMark.equals(RelicRecoveryVuMark.LEFT)){
+                    targetNumber = 1;
+                } else if (vuMark.equals(RelicRecoveryVuMark.CENTER)){
+                    targetNumber = 2;
+                } else if (vuMark.equals(RelicRecoveryVuMark.RIGHT))
+                    targetNumber = 3;
             }
         }
     }

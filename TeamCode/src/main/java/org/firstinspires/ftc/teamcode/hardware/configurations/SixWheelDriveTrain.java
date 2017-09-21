@@ -5,13 +5,16 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.PIDCoefficients;
+
+import org.firstinspires.ftc.teamcode.testing.VuforiaTest;
 
 
 /**
  * Created by andre on 9/20/2017.
  */
 
-public class SixWheelDriveTrain {
+public class SixWheelDriveTrain extends VuforiaTest{
 
     public DcMotor rightFrontMotor;
     public DcMotor rightBackMotor;
