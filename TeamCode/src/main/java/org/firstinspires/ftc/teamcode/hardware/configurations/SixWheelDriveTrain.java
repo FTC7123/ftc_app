@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.PIDCoefficients;
 
 import org.firstinspires.ftc.teamcode.testing.VuforiaTest;
 
@@ -22,7 +21,7 @@ public class SixWheelDriveTrain extends VuforiaTest{
     public DcMotor leftFrontMotor;
     public DcMotor leftBackMotor;
 
-    public OpMode opMode;
+    LinearOpMode opMode;
 
     public void initialize (HardwareMap hardwareMap, LinearOpMode opMode){
         rightFrontMotor = hardwareMap.dcMotor.get("rightFrontMotor");
@@ -33,5 +32,9 @@ public class SixWheelDriveTrain extends VuforiaTest{
 
         leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+    }
+
+    public void vuforiaTracking(){
+
     }
 }

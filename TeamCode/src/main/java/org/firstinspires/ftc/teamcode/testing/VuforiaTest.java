@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveControls;
 
 /**
  * Created by andre on 9/18/2017.
@@ -36,8 +37,6 @@ public class VuforiaTest extends LinearOpMode {
 
         waitForStart();
 
-
-
         relicTrackables.activate();
 
         while (opModeIsActive()){
@@ -45,14 +44,6 @@ public class VuforiaTest extends LinearOpMode {
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                 telemetry.addData("Vumark", "%s visible", vuMark);
                 telemetry.update();
-
-                //Assigns each of the targets a number so we can use this in other classes
-                if (vuMark.equals(RelicRecoveryVuMark.LEFT)){
-                    targetNumber = 1;
-                } else if (vuMark.equals(RelicRecoveryVuMark.CENTER)){
-                    targetNumber = 2;
-                } else if (vuMark.equals(RelicRecoveryVuMark.RIGHT))
-                    targetNumber = 3;
             }
         }
     }

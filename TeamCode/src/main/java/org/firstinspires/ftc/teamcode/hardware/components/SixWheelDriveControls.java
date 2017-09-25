@@ -10,8 +10,6 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain
 
 public class SixWheelDriveControls extends SixWheelDriveTrain {
 
-
-
     public void drive(double meters, double speed) {
         meters =  meters * 4.1772973503558 * 1120;
 

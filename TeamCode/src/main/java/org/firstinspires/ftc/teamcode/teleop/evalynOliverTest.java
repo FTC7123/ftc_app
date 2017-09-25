@@ -28,7 +28,7 @@ public class evalynOliverTest extends LinearOpMode {
             rightMotor1.setPower(gamepad1.right_stick_y);
             rightMotor2.setPower(gamepad1.right_stick_y);
             leftMotor1.setPower(gamepad1.left_stick_y);
-            leftMotor2.setPower(gamepad1.right_stick_y);
+            leftMotor2.setPower(gamepad1.left_stick_y);
             
         }
     }
