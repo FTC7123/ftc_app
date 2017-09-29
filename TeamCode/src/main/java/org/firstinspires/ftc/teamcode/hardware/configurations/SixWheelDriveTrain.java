@@ -33,8 +33,4 @@ public class SixWheelDriveTrain extends VuforiaTest{
         leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
-
-    public void vuforiaTracking(){
-
-    }
 }

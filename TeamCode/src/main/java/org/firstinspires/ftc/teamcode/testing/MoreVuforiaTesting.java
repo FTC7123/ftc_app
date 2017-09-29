@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.vuforia.VuMarkTarget;
 
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -20,8 +21,8 @@ public class MoreVuforiaTesting extends VuforiaTest{
 
         while (opModeIsActive()){
 
-            telemetry.addData("", targetNumber);
-            telemetry.update();
+
+
         }
     }
 }
