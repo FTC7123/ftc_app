@@ -49,6 +49,13 @@ public class LegolessRobot extends SixWheelDriveControls {
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                 telemetry.addData("Vumark", "%s visible", vuMark);
                 telemetry.update();
+                if (vuMark == RelicRecoveryVuMark.LEFT){
+                    targetNumber = 1;
+                } else if (vuMark == RelicRecoveryVuMark.CENTER){
+                    targetNumber = 2;
+                } else if (vuMark == RelicRecoveryVuMark.RIGHT){
+                    targetNumber = 3;
+                }
             }
         }
     }

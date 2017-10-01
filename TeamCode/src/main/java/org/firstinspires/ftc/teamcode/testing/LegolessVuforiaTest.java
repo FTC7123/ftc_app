@@ -15,16 +15,13 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 /**
  * Created by andre on 9/18/2017.
  */
-@Autonomous (name = "Autonomous Test 2")
-public class AutonomousTest2 extends LegolessRobot {
-
-
+@Autonomous (name = "Legoless Vuforia Test")
+public class LegolessVuforiaTest extends LegolessRobot {
 
     VuforiaLocalizer vuforia;
 
     @Override
     public void runOpMode() {
-
 
         LegolessRobot robot = new LegolessRobot();
         robot.initialize(hardwareMap, this);
@@ -35,6 +32,5 @@ public class AutonomousTest2 extends LegolessRobot {
             telemetry.addData("This worked I think", targetNumber);
             telemetry.update();
         }
-
     }
 }

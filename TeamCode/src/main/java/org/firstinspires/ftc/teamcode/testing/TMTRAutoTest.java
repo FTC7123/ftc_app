@@ -10,8 +10,8 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
 /**
  * Created by andre on 7/23/2017.
  */
-@Autonomous (name = "Autonomous Testing")
-public class AutonomousTest extends LinearOpMode {
+@Autonomous (name = "Two Motor Tank Auto Test")
+public class TMTRAutoTest extends LinearOpMode {
     @Override
 
     public void runOpMode() throws InterruptedException{
