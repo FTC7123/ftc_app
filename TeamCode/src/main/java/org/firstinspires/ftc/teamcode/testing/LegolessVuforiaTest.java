@@ -28,9 +28,17 @@ public class LegolessVuforiaTest extends LegolessRobot {
 
         waitForStart();
 
-        while (targetNumber == 1){
-            telemetry.addData("This worked I think", targetNumber);
-            telemetry.update();
+        while (opModeIsActive()){
+            if (targetNumber == 1){
+                telemetry.addData("Left Target ", targetNumber);
+                telemetry.update();
+            } else if (targetNumber == 2){
+                telemetry.addData("Center Target ", targetNumber);
+                telemetry.update();
+            } else if (targetNumber == 3) {
+                telemetry.addData("Right Target ", targetNumber);
+                telemetry.update();
+            }
         }
     }
 }

@@ -56,7 +56,9 @@ public class LegolessRobot extends SixWheelDriveControls {
                 } else if (vuMark == RelicRecoveryVuMark.RIGHT){
                     targetNumber = 3;
                 }
+                return;
             }
+
         }
     }
 }
