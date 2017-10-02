@@ -8,26 +8,28 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveControls;
 
 /**
  * Created by andre on 9/24/2017.
  */
 
-public class LegolessRobot extends SixWheelDriveControls {
-
-
-    LinearOpMode opMode;
+public class LegolessRobot extends LinearOpMode {
 
     VuforiaLocalizer vuforia;
 
     public int targetNumber = 0;
 
 
-
-    // Vuforia section
     public void runOpMode() {
 
+        SixWheelDriveTrain robot = new SixWheelDriveTrain();
+        robot.initialize(hardwareMap, this);
+
+
+        /**
+         * This section handles the Vuforia section of the code.
+         * Specifically just the idenification part, no navigation.
+         */
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
@@ -44,11 +46,16 @@ public class LegolessRobot extends SixWheelDriveControls {
 
         relicTrackables.activate();
 
-        while (opModeIsActive()) {
+        while (opModeIsActive()){
             RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
             if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
                 telemetry.addData("Vumark", "%s visible", vuMark);
                 telemetry.update();
+
+                /**
+                 * Sets the targetNumber depending on which target is visible.
+                 */
+
                 if (vuMark == RelicRecoveryVuMark.LEFT){
                     targetNumber = 1;
                 } else if (vuMark == RelicRecoveryVuMark.CENTER){
@@ -56,9 +63,8 @@ public class LegolessRobot extends SixWheelDriveControls {
                 } else if (vuMark == RelicRecoveryVuMark.RIGHT){
                     targetNumber = 3;
                 }
-                return;
+                break;
             }
-
         }
     }
 }
