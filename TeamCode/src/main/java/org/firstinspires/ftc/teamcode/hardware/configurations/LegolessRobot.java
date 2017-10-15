@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.hardware.configurations;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
@@ -19,11 +20,29 @@ public class LegolessRobot extends LinearOpMode {
 
     public int targetNumber = 0;
 
+    public Servo leftJewelServo;
+    public Servo rightJewelServo;
+
 
     public void runOpMode() {
 
         SixWheelDriveTrain robot = new SixWheelDriveTrain();
         robot.initialize(hardwareMap, this);
+
+        /**
+         * Hardware map initialization section
+         * This is only for LegolessRobot specific hardware
+         */
+
+        leftJewelServo = hardwareMap.servo.get("leftJewelServo");
+        rightJewelServo = hardwareMap.servo.get("rightJewelServo");
+
+
+
+        /**
+         * PUT LegolessRobot METHODS HERE
+         */
+
 
 
         /**
