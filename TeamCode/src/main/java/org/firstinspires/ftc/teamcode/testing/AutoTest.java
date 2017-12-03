@@ -18,26 +18,29 @@ public class AutoTest extends LegolessRobot{
     @Override
     public void runOpMode() {
 
-        SixWheelDriveTrain robot = new SixWheelDriveTrain();
-        robot.initialize(hardwareMap, this);
+        SixWheelDriveTrain driveTrain = new SixWheelDriveTrain();
+        driveTrain.initialize(hardwareMap, this);
 
         telemetry.addData("target 0", targetNumber);
         telemetry.update();
 
         super.runOpMode();
 
-        /**
+        /*
          * Allows the VuForia code to activate before the match starts
          */
 
         waitForStart();
 
-        /**
+        /*
          * The different actions for the robot go in this statement depending on which target it sees.
          * targetNumber == 1, Left Target
          * targetNumber == 2, Center Target
          * targetNumber == 3, Right Target
           */
+
+
+        activateVuforia();
 
         if (targetNumber == 1) {
             telemetry.addData("target 1", targetNumber);
@@ -50,7 +53,7 @@ public class AutoTest extends LegolessRobot{
             telemetry.update();
         }
 
-        /**
+        /*
          * Make sure the post condition for all 3 options is the same.
          * This will allow the following code to work no matter which target is visible.
          */

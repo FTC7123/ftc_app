@@ -13,23 +13,32 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain
 public class LegolessTeleOp extends LegolessRobot{
     LinearOpMode opMode;
 
-
     @Override
     public void runOpMode() {
         super.runOpMode();
         SixWheelDriveTrain driveTrain = new SixWheelDriveTrain();
         driveTrain.initialize(hardwareMap, this);
 
+
         waitForStart();
 
-        sleep(2000);
-        try{
-            if(gamepad1.a){
-                relicClawServo.setPosition(0);
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
 
+
+        while (opModeIsActive()){
+            driveTrain.rightFrontMotor.setPower(gamepad1.right_stick_y);
+            driveTrain.rightBackMotor.setPower(gamepad1.right_stick_y);
+
+            driveTrain.leftFrontMotor.setPower(gamepad1.left_stick_y);
+            driveTrain.leftBackMotor.setPower(gamepad1.left_stick_y);
+
+            sleep(2000);
+//            try{
+//                if(gamepad1.a){
+//                    relicClawServo.setPosition(0);
+//                }
+//            } catch (NullPointerException e) {
+//                e.printStackTrace();
+//            }
+        }
     }
 }
