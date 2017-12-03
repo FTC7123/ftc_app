@@ -34,6 +34,7 @@ public class PincherHarvesterTest extends LinearOpMode{
             while(gamepad1.a){
                 rightServo.setPosition(0.5);
                 leftServo.setPosition(0.5);
+
             }
         }
     }
