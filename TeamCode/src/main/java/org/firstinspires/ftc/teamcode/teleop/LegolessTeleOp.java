@@ -19,10 +19,7 @@ public class LegolessTeleOp extends LegolessRobot{
         SixWheelDriveTrain driveTrain = new SixWheelDriveTrain();
         driveTrain.initialize(hardwareMap, this);
 
-
         waitForStart();
-
-
 
         while (opModeIsActive()){
             driveTrain.rightFrontMotor.setPower(gamepad1.right_stick_y);
@@ -31,7 +28,6 @@ public class LegolessTeleOp extends LegolessRobot{
             driveTrain.leftFrontMotor.setPower(gamepad1.left_stick_y);
             driveTrain.leftBackMotor.setPower(gamepad1.left_stick_y);
 
-            sleep(2000);
 //            try{
 //                if(gamepad1.a){
 //                    relicClawServo.setPosition(0);
