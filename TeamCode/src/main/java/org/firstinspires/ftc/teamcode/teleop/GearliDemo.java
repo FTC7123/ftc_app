@@ -26,7 +26,7 @@ public class GearliDemo extends LinearOpMode {
         rightMotor1.setDirection(DcMotorSimple.Direction.REVERSE);
         rightMotor2.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        handServo.setPosition(0);
+        handServo.setPosition(0.25);
 
         waitForStart();
 
@@ -37,9 +37,9 @@ public class GearliDemo extends LinearOpMode {
             leftMotor2.setPower(gamepad1.left_stick_y);
 
             if (gamepad1.a){
-                handServo.setPosition(0.75);
+                handServo.setPosition(0.5);
             } else {
-                handServo.setPosition(0.25);
+                handServo.setPosition(0.0);
             }
         }
     }

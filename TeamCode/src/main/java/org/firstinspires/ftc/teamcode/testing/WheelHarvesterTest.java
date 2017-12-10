@@ -1,12 +1,13 @@
 package org.firstinspires.ftc.teamcode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
 
 /**
  * Created by andre on 12/3/2017.
  */
-
+@TeleOp (name = "Wheel Harvester Test")
 public class WheelHarvesterTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
@@ -35,14 +36,16 @@ public class WheelHarvesterTest extends LinearOpMode {
 
         waitForStart();
 
-        //controls the bottom servos
-        right1.setPower(gamepad1.left_stick_y);
-        left1.setPower(gamepad1.left_stick_y);
+        while (opModeIsActive()){
+            //controls the bottom servos
+            right1.setPower(gamepad1.left_stick_y);
+            left1.setPower(gamepad1.left_stick_y);
 
-        //controls the lifting servos
-        right2.setPower(gamepad1.right_stick_y);
-        right3.setPower(gamepad1.right_stick_y);
-        left2.setPower(gamepad1.right_stick_y);
-        left3.setPower(gamepad1.right_stick_y);
+            //controls the lifting servos
+            right2.setPower(gamepad1.right_stick_y);
+            right3.setPower(gamepad1.right_stick_y);
+            left2.setPower(gamepad1.right_stick_y);
+            left3.setPower(gamepad1.right_stick_y);
+        }
     }
 }
