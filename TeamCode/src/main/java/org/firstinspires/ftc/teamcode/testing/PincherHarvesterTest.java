@@ -13,12 +13,19 @@ public class PincherHarvesterTest extends LinearOpMode{
     @Override
 
     public void runOpMode() throws InterruptedException {
-       DcMotor winch;
+
+        DcMotor winch;
+
+        DcMotor rightDrive;
+        DcMotor leftDrive;
 
         Servo rightServo;
         Servo leftServo;
 
         winch = hardwareMap.dcMotor.get("winch");
+
+        rightDrive = hardwareMap.dcMotor.get("rightDrvie");
+        leftDrive = hardwareMap.dcMotor.get("leftDrive");
 
         rightServo = hardwareMap.servo.get("rightServo");
         leftServo = hardwareMap.servo.get("leftServo");
@@ -29,6 +36,10 @@ public class PincherHarvesterTest extends LinearOpMode{
         waitForStart();
 
         while (opModeIsActive()){
+
+            rightDrive.setPower(gamepad1.right_stick_y);
+            leftDrive.setPower(gamepad1.left_stick_y);
+
             winch.setPower(gamepad1.left_stick_y);
 
             while(gamepad1.a){
