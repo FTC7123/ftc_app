@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp (name = "Pincher Harvester Test")
 public class PincherHarvesterTest extends LinearOpMode{
     @Override
-
     public void runOpMode() throws InterruptedException {
 
         DcMotor winch;
