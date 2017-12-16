@@ -29,8 +29,8 @@ public class PincherHarvesterTest extends LinearOpMode{
         rightServo = hardwareMap.servo.get("rightServo");
         leftServo = hardwareMap.servo.get("leftServo");
 
-        rightServo.setPosition(0);
-        leftServo.setPosition(0);
+        rightServo.setPosition(0.5);
+        leftServo.setPosition(0.5);
 
         waitForStart();
 
@@ -42,11 +42,11 @@ public class PincherHarvesterTest extends LinearOpMode{
             winch.setPower(gamepad2.left_stick_y);
 
             if (gamepad2.a){
-                rightServo.setPosition(1);
-                leftServo.setPosition(0.4);
+                rightServo.setPosition(0.9);
+                leftServo.setPosition(0.1);
             } else {
-                rightServo.setPosition(0.6);
-                leftServo.setPosition(0);
+                rightServo.setPosition(0.5);
+                leftServo.setPosition(0.5);
             }
         }
     }
