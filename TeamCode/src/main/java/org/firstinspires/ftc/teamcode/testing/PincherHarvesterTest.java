@@ -17,8 +17,6 @@ public class PincherHarvesterTest extends LinearOpMode{
     @Override
     public void runOpMode() throws InterruptedException {
 
-
-
         DcMotor winch;
 
         DcMotor rightDrive;
@@ -65,11 +63,11 @@ public class PincherHarvesterTest extends LinearOpMode{
             }
 
             if (gamepad2.right_bumper){
-                rightServoPosition = !rightServoPosition;
+                leftServoPosition = !leftServoPosition;
             }
 
             if (gamepad2.left_bumper){
-                leftServoPosition = !leftServoPosition;
+                rightServoPosition = !rightServoPosition;
             }
 
             if (rightServoPosition == POSITION_CLOSED){
