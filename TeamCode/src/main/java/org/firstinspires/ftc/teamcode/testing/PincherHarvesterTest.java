@@ -41,10 +41,18 @@ public class PincherHarvesterTest extends LinearOpMode{
 
             winch.setPower(gamepad2.left_stick_y);
 
-            if (gamepad2.a){
+            if (gamepad2.right_bumper) {
+                rightServo.setPosition(0.5);
+            }
+
+            if (gamepad2.left_bumper) {
+                leftServo.setPosition(0.5);
+            }
+            if (gamepad2.a) {
                 rightServo.setPosition(0.9);
                 leftServo.setPosition(0.1);
-            } else {
+            }
+            if (gamepad2.b) {
                 rightServo.setPosition(0.5);
                 leftServo.setPosition(0.5);
             }

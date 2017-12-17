@@ -41,7 +41,7 @@ public class GearliDemo extends LinearOpMode {
                 sleep(750);
                 handServo.setPosition(0.5);
                 sleep(750);
-            } else {
+            }  else {
                 handServo.setPosition(0.0);
             }
         }
