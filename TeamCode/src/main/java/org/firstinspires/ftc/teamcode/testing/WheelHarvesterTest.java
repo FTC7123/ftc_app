@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.testing;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
  * Created by andre on 12/3/2017.
@@ -29,6 +30,10 @@ public class WheelHarvesterTest extends LinearOpMode {
         right1 = hardwareMap.crservo.get("right1");
         right2 = hardwareMap.crservo.get("right2");
         right3 = hardwareMap.crservo.get("right3");
+
+        right1.setDirection(DcMotorSimple.Direction.REVERSE);
+        right2.setDirection(DcMotorSimple.Direction.REVERSE);
+        right3.setDirection(DcMotorSimple.Direction.REVERSE);
 
         left1 = hardwareMap.crservo.get("left1");
         left2 = hardwareMap.crservo.get("left2");
