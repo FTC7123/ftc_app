@@ -41,7 +41,7 @@ public class WheelHarvesterTest extends LinearOpMode {
 
         waitForStart();
 
-        while (opModeIsActive()){
+        while (opModeIsActive()) {
             //controls the bottom servos
             right1.setPower(gamepad1.left_stick_y);
             left1.setPower(gamepad1.left_stick_y);

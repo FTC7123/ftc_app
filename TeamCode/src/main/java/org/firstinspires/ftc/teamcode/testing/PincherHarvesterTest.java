@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.testing;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -10,8 +11,13 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 @TeleOp (name = "Pincher Harvester Test")
 public class PincherHarvesterTest extends LinearOpMode{
+    public static final boolean POSITION_OPEN = false;
+    public static final boolean POSITION_CLOSED = true;
+
     @Override
     public void runOpMode() throws InterruptedException {
+
+
 
         DcMotor winch;
 
@@ -21,10 +27,15 @@ public class PincherHarvesterTest extends LinearOpMode{
         Servo rightServo;
         Servo leftServo;
 
+        boolean rightServoPosition = POSITION_OPEN;
+        boolean leftServoPosition = POSITION_OPEN;
+
         winch = hardwareMap.dcMotor.get("winch");
 
         rightDrive = hardwareMap.dcMotor.get("rightDrive");
         leftDrive = hardwareMap.dcMotor.get("leftDrive");
+
+        leftDrive.setDirection(DcMotorSimple.Direction.REVERSE);
 
         rightServo = hardwareMap.servo.get("rightServo");
         leftServo = hardwareMap.servo.get("leftServo");
@@ -41,19 +52,35 @@ public class PincherHarvesterTest extends LinearOpMode{
 
             winch.setPower(gamepad2.left_stick_y);
 
-            if (gamepad2.right_bumper) {
+
+
+            if (gamepad2.a){
+                rightServoPosition = POSITION_CLOSED;
+                leftServoPosition = POSITION_CLOSED;
+            }
+
+            if (gamepad2.b){
+                rightServoPosition = POSITION_OPEN;
+                leftServoPosition = POSITION_OPEN;
+            }
+
+            if (gamepad2.right_bumper){
+                rightServoPosition = !rightServoPosition;
+            }
+
+            if (gamepad2.left_bumper){
+                leftServoPosition = !leftServoPosition;
+            }
+
+            if (rightServoPosition == POSITION_CLOSED){
+                rightServo.setPosition(0.9);
+            } else {
                 rightServo.setPosition(0.5);
             }
 
-            if (gamepad2.left_bumper) {
-                leftServo.setPosition(0.5);
-            }
-            if (gamepad2.a) {
-                rightServo.setPosition(0.9);
+            if (leftServoPosition == POSITION_CLOSED){
                 leftServo.setPosition(0.1);
-            }
-            if (gamepad2.b) {
-                rightServo.setPosition(0.5);
+            } else {
                 leftServo.setPosition(0.5);
             }
         }
