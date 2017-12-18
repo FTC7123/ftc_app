@@ -28,6 +28,9 @@ public class PincherHarvesterTest extends LinearOpMode{
         boolean rightServoPosition = POSITION_OPEN;
         boolean leftServoPosition = POSITION_OPEN;
 
+        boolean rightButtonDebouce = false;
+        boolean leftButtonDebouce = false;
+
         winch = hardwareMap.dcMotor.get("winch");
 
         rightDrive = hardwareMap.dcMotor.get("rightDrive");
@@ -50,8 +53,6 @@ public class PincherHarvesterTest extends LinearOpMode{
 
             winch.setPower(gamepad2.left_stick_y);
 
-
-
             if (gamepad2.a){
                 rightServoPosition = POSITION_CLOSED;
                 leftServoPosition = POSITION_CLOSED;
@@ -63,11 +64,21 @@ public class PincherHarvesterTest extends LinearOpMode{
             }
 
             if (gamepad2.right_bumper){
-                leftServoPosition = !leftServoPosition;
+                if (!rightButtonDebouce){
+                    leftServoPosition = !leftServoPosition;
+                    rightButtonDebouce = true;
+                }
+            } else {
+                rightButtonDebouce = false;
             }
 
             if (gamepad2.left_bumper){
-                rightServoPosition = !rightServoPosition;
+                if (!leftButtonDebouce){
+                    rightServoPosition = !rightServoPosition;
+                    leftButtonDebouce = true;
+                }
+            } else {
+                rightButtonDebouce = false;
             }
 
             if (rightServoPosition == POSITION_CLOSED){
