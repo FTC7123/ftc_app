@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.hardware.configurations;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -11,56 +12,54 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.robotcore.internal.vuforia.VuforiaLocalizerImpl;
 
-/**sf SFB
+/**
  * Created by andre on 9/24/2017.
+ *
+ * Hardware and methods specifically for Legoless
  */
 
 public class LegolessRobot extends LinearOpMode {
+
+    public static final boolean POSITION_OPEN = false;
+    public static final boolean POSITION_CLOSED = true;
 
     VuforiaLocalizer vuforia;
 
     public int targetNumber = 0;
 
-//    public Servo leftJewelServo;
-//    public Servo rightJewelServo;
+    public DcMotor winch;
 
-//    public Servo relicClawServo;
+    public Servo rightServo;
+    public Servo leftServo;
 
+    public boolean rightServoPosition = POSITION_OPEN;
+    public boolean leftServoPosition = POSITION_OPEN;
 
-    //public Servo relicArmServo;
+    public boolean rightButtonDebouce = false;
+    public boolean leftButtonDebouce = false;
 
     public void runOpMode() {
-
-        SixWheelDriveTrain robot = new SixWheelDriveTrain();
-        robot.initialize(hardwareMap, this);
 
         /*
          * Hardware map initialization section
          * This is only for LegolessRobot specific hardware
          */
 
-//        leftJewelServo = hardwareMap.servo.get("leftJewelServo");
-//        rightJewelServo = hardwareMap.servo.get("rightJewelServo");
+        winch = hardwareMap.dcMotor.get("winch");
 
-//        relicClawServo = hardwareMap.servo.get("relicClawServo");
+        rightServo = hardwareMap.servo.get("rightServo");
+        leftServo = hardwareMap.servo.get("leftServo");
 
-
-
-
-
-        /*
-         * PUT LegolessRobot METHODS HERE
-         */
-
-
-
-        /*
-         * This section handles the Vuforia section of the code.
-         * Specifically just the idenification part, no navigation.
-         */
+        rightServo.setPosition(0.5);
+        leftServo.setPosition(0.5);
     }
+
+    /*
+    * PUT LegolessRobot METHODS HERE
+    */
+
+    //Vuforia Code
     public void activateVuforia() {
-//            try {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
@@ -98,10 +97,6 @@ public class LegolessRobot extends LinearOpMode {
             }
         }
     }
-// catch (VuforiaLocalizerImpl.FailureException e){
-//                e.printStackTrace();
-//                throw e;
-//            }
 }
 
 

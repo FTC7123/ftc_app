@@ -32,8 +32,8 @@ public class SixWheelDriveTrain{
         leftFrontMotor = hardwareMap.dcMotor.get("leftFrontMotor");
         leftBackMotor = hardwareMap.dcMotor.get("leftBackMotor");
 
-        leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void drive(double meters, double speed) {

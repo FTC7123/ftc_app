@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by andre on 12/3/2017.
+ * Runs the pincher harvester and a basic two sided drive train
  */
 @TeleOp (name = "Pincher Harvester Test")
 public class PincherHarvesterTest extends LinearOpMode{
