@@ -27,8 +27,8 @@ public class LegolessTeleOp extends LegolessRobot{
 
         double driveFactor = 0.7;
 
-        MovingAverage rightStickAverage = new MovingAverage(100);
-        MovingAverage leftStickAverage = new MovingAverage(100);
+        MovingAverage rightStickAverage = new MovingAverage(20);
+        MovingAverage leftStickAverage = new MovingAverage(20);
 
         telemetry.addData("Drive Mode: Sport", driveFactor);
         telemetry.update();
