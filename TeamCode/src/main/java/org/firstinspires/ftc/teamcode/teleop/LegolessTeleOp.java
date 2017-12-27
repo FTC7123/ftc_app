@@ -142,13 +142,13 @@ public class LegolessTeleOp extends LegolessRobot{
                 jewelServoDebounce = false;
             }
 
-//            if (jewelServoPosition = POSITION_UP){
-//                jewelServo.setPosition(0);
-//            }
-//
-//            if (jewelServoPosition = POSITION_DOWN){
-//                jewelServo.setPosition(1);
-//            }
+            if (jewelServoPosition = POSITION_UP){
+                jewelServo.setPosition(0);
+            }
+
+            if (jewelServoPosition = POSITION_DOWN){
+                jewelServo.setPosition(1);
+            }
             //End Jewel Servo Controls
 
             //Relic Controls
