@@ -6,6 +6,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+
 /**
  * Created by andre on 10/15/2017.
  */
@@ -13,13 +18,20 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain
 public class LegolessTeleOp extends LegolessRobot{
     LinearOpMode opMode;
 
+
     @Override
     public void runOpMode() {
         super.runOpMode();
         SixWheelDriveTrain driveTrain = new SixWheelDriveTrain();
         driveTrain.initialize(hardwareMap, this);
 
-        double driveFactor = 0.75;
+        double driveFactor = 0.7;
+
+        /** Will wuz here */
+        // Create two lists of size 100 with all elements set to 0
+        List<Double> yStickReadings = new ArrayList<>(Collections.nCopies(100, 0.0));
+        List<Double> xStickReadings = new ArrayList<>(Collections.nCopies(100, 0.0));
+        /** END Will wuz here */
 
         telemetry.addData("Drive Mode: Sport", driveFactor);
         telemetry.update();
@@ -30,26 +42,20 @@ public class LegolessTeleOp extends LegolessRobot{
 
             //Drive speed controls
             if (gamepad1.x){
-                driveFactor = 0.5;
+                driveFactor = 0.4;
                 telemetry.addData("Drive Mode: Normal ", driveFactor);
                 telemetry.update();
             }
             if (gamepad1.y){
-                driveFactor = 0.75;
+                driveFactor = 0.7;
                 telemetry.addData("Drive Mode: Sport ", driveFactor);
                 telemetry.update();
             }
             if (gamepad1.b){
                 driveFactor = 1;
                 telemetry.addData("Drive Mode: Sport Plus ", driveFactor);
+                telemetry.update();
             }
-
-            //Drive controls
-            driveTrain.rightFrontMotor.setPower(gamepad1.right_stick_y * driveFactor);
-            driveTrain.rightBackMotor.setPower(gamepad1.right_stick_y * driveFactor);
-
-            driveTrain.leftFrontMotor.setPower(gamepad1.left_stick_y * driveFactor);
-            driveTrain.leftBackMotor.setPower(gamepad1.left_stick_y * driveFactor);
 
             //Nudge controls
             if (gamepad1.dpad_up){
@@ -57,32 +63,33 @@ public class LegolessTeleOp extends LegolessRobot{
                 driveTrain.rightBackMotor.setPower(0.25);
                 driveTrain.leftFrontMotor.setPower(0.25);
                 driveTrain.leftBackMotor.setPower(0.25);
-            }
-
-            if (gamepad1.dpad_down){
+            } else if (gamepad1.dpad_down){
                 driveTrain.rightFrontMotor.setPower(-0.25);
                 driveTrain.rightBackMotor.setPower(-0.25);
                 driveTrain.leftFrontMotor.setPower(-0.25);
                 driveTrain.leftBackMotor.setPower(-0.25);
-            }
-
-            if (gamepad1.dpad_left){
+            } else if (gamepad1.dpad_left){
                 driveTrain.rightFrontMotor.setPower(0.25);
                 driveTrain.rightBackMotor.setPower(0.25);
                 driveTrain.leftFrontMotor.setPower(-0.25);
                 driveTrain.leftBackMotor.setPower(-0.25);
-            }
-
-            if (gamepad1.dpad_right){
+            } else if (gamepad1.dpad_right){
                 driveTrain.rightFrontMotor.setPower(-0.25);
                 driveTrain.rightBackMotor.setPower(-0.25);
                 driveTrain.leftFrontMotor.setPower(0.25);
                 driveTrain.leftBackMotor.setPower(0.25);
+            } else {
+                //Drive Controls
+                driveTrain.rightFrontMotor.setPower(gamepad1.right_stick_y * driveFactor);
+                driveTrain.rightBackMotor.setPower(gamepad1.right_stick_y * driveFactor);
+
+                driveTrain.leftFrontMotor.setPower(gamepad1.left_stick_y * driveFactor);
+                driveTrain.leftBackMotor.setPower(gamepad1.left_stick_y * driveFactor);
             }
 
 
             //Harvester Controls
-            winch.setPower(gamepad2.left_stick_y);
+            harvesterWinch.setPower(gamepad2.left_stick_y);
 
             if (gamepad2.a){
                 rightServoPosition = POSITION_CLOSED;
@@ -123,6 +130,9 @@ public class LegolessTeleOp extends LegolessRobot{
             } else {
                 leftServo.setPosition(0.5);
             }
+
+            //Relic Controls
+            relicWinch.setPower(gamepad2.right_stick_y);
         }
     }
 }

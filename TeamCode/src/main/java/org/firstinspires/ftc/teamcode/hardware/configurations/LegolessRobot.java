@@ -27,8 +27,7 @@ public class LegolessRobot extends LinearOpMode {
 
     public int targetNumber = 0;
 
-    public DcMotor winch;
-
+    public DcMotor harvesterWinch;
     public Servo rightServo;
     public Servo leftServo;
 
@@ -38,6 +37,11 @@ public class LegolessRobot extends LinearOpMode {
     public boolean rightButtonDebouce = false;
     public boolean leftButtonDebouce = false;
 
+    public DcMotor relicWinch;
+    public Servo relicArmServo;
+    public Servo relicClawServo;
+
+
     public void runOpMode() {
 
         /*
@@ -45,13 +49,18 @@ public class LegolessRobot extends LinearOpMode {
          * This is only for LegolessRobot specific hardware
          */
 
-        winch = hardwareMap.dcMotor.get("winch");
-
+        harvesterWinch = hardwareMap.dcMotor.get("harvesterWinch");
         rightServo = hardwareMap.servo.get("rightServo");
         leftServo = hardwareMap.servo.get("leftServo");
 
         rightServo.setPosition(0.5);
         leftServo.setPosition(0.5);
+
+        relicWinch = hardwareMap.dcMotor.get("relicWinch");
+        relicArmServo = hardwareMap.servo.get("relicArmServo");
+        relicClawServo = hardwareMap.servo.get("relicClawServo");
+
+
     }
 
     /*
