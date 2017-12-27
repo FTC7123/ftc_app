@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain;
+import org.firstinspires.ftc.teamcode.util.MovingAverage;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -26,11 +27,8 @@ public class LegolessTeleOp extends LegolessRobot{
 
         double driveFactor = 0.7;
 
-        /** Will wuz here */
-        // Create two lists of size 100 with all elements set to 0
-        List<Double> yStickReadings = new ArrayList<>(Collections.nCopies(100, 0.0));
-        List<Double> xStickReadings = new ArrayList<>(Collections.nCopies(100, 0.0));
-        /** END Will wuz here */
+        MovingAverage rightStickAverage = new MovingAverage(100);
+        MovingAverage leftStickAverage = new MovingAverage(100);
 
         telemetry.addData("Drive Mode: Sport", driveFactor);
         telemetry.update();
@@ -56,6 +54,9 @@ public class LegolessTeleOp extends LegolessRobot{
                 telemetry.update();
             }
 
+            rightStickAverage.addValue(gamepad1.right_stick_y);
+            leftStickAverage.addValue(gamepad1.left_stick_y);
+
             //Nudge controls
             if (gamepad1.dpad_up){
                 driveTrain.rightFrontMotor.setPower(0.25);
@@ -79,11 +80,11 @@ public class LegolessTeleOp extends LegolessRobot{
                 driveTrain.leftBackMotor.setPower(0.25);
             } else {
                 //Drive Controls
-                driveTrain.rightFrontMotor.setPower(gamepad1.right_stick_y * driveFactor);
-                driveTrain.rightBackMotor.setPower(gamepad1.right_stick_y * driveFactor);
+                driveTrain.rightFrontMotor.setPower(rightStickAverage.getAverage() * driveFactor);
+                driveTrain.rightBackMotor.setPower(rightStickAverage.getAverage() * driveFactor);
 
-                driveTrain.leftFrontMotor.setPower(gamepad1.left_stick_y * driveFactor);
-                driveTrain.leftBackMotor.setPower(gamepad1.left_stick_y * driveFactor);
+                driveTrain.leftFrontMotor.setPower(leftStickAverage.getAverage() * driveFactor);
+                driveTrain.leftBackMotor.setPower(leftStickAverage.getAverage() * driveFactor);
             }
             //End Nudge/Drive Controls
 
