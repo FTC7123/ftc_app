@@ -18,7 +18,6 @@ import java.util.Collections;
 public class LegolessTeleOp extends LegolessRobot{
     LinearOpMode opMode;
 
-
     @Override
     public void runOpMode() {
         super.runOpMode();
@@ -86,6 +85,7 @@ public class LegolessTeleOp extends LegolessRobot{
                 driveTrain.leftFrontMotor.setPower(gamepad1.left_stick_y * driveFactor);
                 driveTrain.leftBackMotor.setPower(gamepad1.left_stick_y * driveFactor);
             }
+            //End Nudge/Drive Controls
 
 
             //Harvester Controls
@@ -130,9 +130,31 @@ public class LegolessTeleOp extends LegolessRobot{
             } else {
                 leftServo.setPosition(0.5);
             }
+            //End Harvester Controls
+
+            //Jewel Servo Controls
+            if (gamepad1.left_bumper){
+                if (!jewelServoDebounce){
+                    jewelServoPosition = !jewelServoPosition;
+                    jewelServoDebounce = true;
+                }
+            } else {
+                jewelServoDebounce = false;
+            }
+
+//            if (jewelServoPosition = POSITION_UP){
+//                jewelServo.setPosition(0);
+//            }
+//
+//            if (jewelServoPosition = POSITION_DOWN){
+//                jewelServo.setPosition(1);
+//            }
+            //End Jewel Servo Controls
 
             //Relic Controls
             relicWinch.setPower(gamepad2.right_stick_y);
+
+            //End Relic Controls
         }
     }
 }

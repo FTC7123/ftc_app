@@ -23,7 +23,7 @@ public class LegolessRobot extends LinearOpMode {
     public static final boolean POSITION_OPEN = false;
     public static final boolean POSITION_CLOSED = true;
 
-    VuforiaLocalizer vuforia;
+    public VuforiaLocalizer vuforia;
 
     public int targetNumber = 0;
 
@@ -38,8 +38,18 @@ public class LegolessRobot extends LinearOpMode {
     public boolean leftButtonDebouce = false;
 
     public DcMotor relicWinch;
-    public Servo relicArmServo;
-    public Servo relicClawServo;
+//    public Servo relicArmServo;
+//    public Servo relicClawServo;
+//
+//    public Servo jewelServo;
+
+    public static final boolean POSITION_UP = false;
+    public static final boolean POSITION_DOWN = true;
+
+    public boolean jewelServoPosition = POSITION_UP;
+
+    public boolean jewelServoDebounce = false;
+
 
 
     public void runOpMode() {
@@ -57,9 +67,10 @@ public class LegolessRobot extends LinearOpMode {
         leftServo.setPosition(0.5);
 
         relicWinch = hardwareMap.dcMotor.get("relicWinch");
-        relicArmServo = hardwareMap.servo.get("relicArmServo");
-        relicClawServo = hardwareMap.servo.get("relicClawServo");
-
+//        relicArmServo = hardwareMap.servo.get("relicArmServo");
+//        relicClawServo = hardwareMap.servo.get("relicClawServo");
+//
+//        jewelServo = hardwareMap.servo.get("jewelServo");
 
     }
 
