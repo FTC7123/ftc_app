@@ -156,6 +156,7 @@ public class LegolessTeleOp extends LegolessRobot{
             relicWinch.setPower(gamepad2.right_stick_y);
 
             //End Relic Controls
+            sleep(1);
         }
     }
 }
