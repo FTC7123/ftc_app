@@ -155,8 +155,26 @@ public class LegolessTeleOp extends LegolessRobot{
             //Relic Controls
             relicWinch.setPower(gamepad2.right_stick_y);
 
+            if (gamepad1.a) {
+                relicArmServo.setPosition(0);
+            }
+
+            if (gamepad1.b) {
+                relicArmServo.setPosition(0.13);
+            }
+
+            if (gamepad2.x) {
+                relicClawServo.setPosition(0);
+            }
+
+            if (gamepad2.y) {
+                relicClawServo.setPosition(1);
+            }
+
             //End Relic Controls
-            sleep(1);
+
+
+            sleep(1 / 2);
         }
     }
 }
