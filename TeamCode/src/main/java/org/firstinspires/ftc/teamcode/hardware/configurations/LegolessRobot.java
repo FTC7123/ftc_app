@@ -41,6 +41,12 @@ public class LegolessRobot extends LinearOpMode {
     public Servo relicArmServo;
     public Servo relicClawServo;
 
+    public double relicArmBack = 0.015;
+    public double relicArmUp = 0.05;
+    public double relicArmDown = 0.13;
+
+//0.13
+
     public Servo jewelServo;
 
     public static final boolean POSITION_UP = false;
@@ -69,6 +75,7 @@ public class LegolessRobot extends LinearOpMode {
         relicWinch = hardwareMap.dcMotor.get("relicWinch");
         relicArmServo = hardwareMap.servo.get("relicArmServo");
         relicClawServo = hardwareMap.servo.get("relicClawServo");
+
 
         relicArmServo.setPosition(0);
 
@@ -120,5 +127,3 @@ public class LegolessRobot extends LinearOpMode {
         }
     }
 }
-
-
