@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
+
 /**
  * Created by thomaslauer on 12/30/17.
  */
@@ -27,13 +29,12 @@ public class Harvester {
     public boolean rightServoPosition = POSITION_OPEN;
     public boolean leftServoPosition = POSITION_OPEN;
 
-    public Harvester(HardwareMap hardwareMap, LinearOpMode opMode) {
+    public Harvester(HardwareMap hardwareMap, LegolessRobot opMode) {
         harvesterWinch = hardwareMap.dcMotor.get("harvesterWinch");
         rightServo = hardwareMap.servo.get("rightServo");
         leftServo = hardwareMap.servo.get("leftServo");
 
-        rightServo.setPosition(RIGHT_ARM_OPENED);
-        leftServo.setPosition(LEFT_ARM_OPENED);
+        openHarvester();
     }
 
     public void openHarvester() {

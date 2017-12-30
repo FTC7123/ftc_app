@@ -89,13 +89,11 @@ public class LegolessTeleOp extends LinearOpMode {
             robot.harvester.harvesterWinch.setPower(gamepad2.left_stick_y);
 
             if (gamepad2.a){
-                robot.harvester.rightServoPosition = Harvester.POSITION_CLOSED;
-                robot.harvester.leftServoPosition = Harvester.POSITION_CLOSED;
+                robot.harvester.closeHarvester();
             }
 
             if (gamepad2.b){
-                robot.harvester.rightServoPosition = Harvester.POSITION_OPEN;
-                robot.harvester.leftServoPosition = Harvester.POSITION_OPEN;
+                robot.harvester.openHarvester();
             }
 
             if (gamepad2.right_bumper){

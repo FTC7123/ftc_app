@@ -12,6 +12,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.hardware.components.Harvester;
+import org.firstinspires.ftc.teamcode.hardware.components.JewelArm;
+import org.firstinspires.ftc.teamcode.hardware.components.RelicArm;
 import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveTrain;
 
 /**
@@ -23,59 +25,16 @@ import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveTrain;
 public class LegolessRobot extends SixWheelDriveTrain {
 
     public Harvester harvester;
-
-
-    public VuforiaLocalizer vuforia;
-
-    public int targetNumber = 0;
-
-
-
-
-
-    public boolean rightButtonDebouce = false;
-    public boolean leftButtonDebouce = false;
-
-    public DcMotor relicWinch;
-    public Servo relicArmServo;
-    public Servo relicClawServo;
-
-    public double relicArmBack = 0.015;
-    public double relicArmUp = 0.05;
-    public double relicArmDown = 0.13;
-
-    public Servo jewelServo;
-
-    public static final boolean POSITION_UP = false;
-    public static final boolean POSITION_DOWN = true;
-
-    public boolean jewelServoPosition = POSITION_UP;
-
-    public boolean jewelServoDebounce = false;
-
-
+    public JewelArm jewelArm;
+    public RelicArm relicArm;
 
     public LegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
 
+        harvester = new Harvester(hardwareMap, this);
+        jewelArm = new JewelArm(hardwareMap, this);
+        relicArm = new RelicArm(hardwareMap, this);
 
-        /*
-         * Hardware map initialization section
-         * This is only for LegolessRobot specific hardware
-         */
-
-
-        harvester = new Harvester(hardwareMap, opMode);
-
-
-        relicWinch = hardwareMap.dcMotor.get("relicWinch");
-        relicArmServo = hardwareMap.servo.get("relicArmServo");
-        relicClawServo = hardwareMap.servo.get("relicClawServo");
-
-
-        relicArmServo.setPosition(0);
-
-        jewelServo = hardwareMap.servo.get("jewelServo");
 
     }
 
