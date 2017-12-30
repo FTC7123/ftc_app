@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.hardware.configurations;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -88,7 +89,7 @@ public class LegolessRobot extends LinearOpMode {
     */
 
     //Vuforia Code
-    public void activateVuforia() {
+    public void activateVuforia(HardwareMap hardwareMap) {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
@@ -101,7 +102,7 @@ public class LegolessRobot extends LinearOpMode {
         VuforiaTrackable relicTemplate = relicTrackables.get(0);
         relicTemplate.setName("relicVuMarkTemplate");
 
-        waitForStart();
+        //waitForStart();
 
         relicTrackables.activate();
 

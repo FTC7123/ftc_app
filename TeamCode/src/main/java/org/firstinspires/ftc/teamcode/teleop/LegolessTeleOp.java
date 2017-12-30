@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveControls;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain;
 import org.firstinspires.ftc.teamcode.util.MovingAverage;
@@ -22,7 +23,7 @@ public class LegolessTeleOp extends LegolessRobot{
     @Override
     public void runOpMode() {
         super.runOpMode();
-        SixWheelDriveTrain driveTrain = new SixWheelDriveTrain();
+        SixWheelDriveControls driveTrain = new SixWheelDriveControls();
         driveTrain.initialize(hardwareMap, this);
 
         double driveFactor = 0.7;
