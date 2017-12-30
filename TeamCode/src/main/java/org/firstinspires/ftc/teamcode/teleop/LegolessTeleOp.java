@@ -3,28 +3,20 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveControls;
+import org.firstinspires.ftc.teamcode.hardware.components.Harvester;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
-import org.firstinspires.ftc.teamcode.hardware.configurations.SixWheelDriveTrain;
 import org.firstinspires.ftc.teamcode.util.MovingAverage;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
 
 /**
  * Created by andre on 10/15/2017.
  */
 @TeleOp (name = "Legoless Teleop")
-public class LegolessTeleOp extends LegolessRobot{
+public class LegolessTeleOp extends LinearOpMode {
     LinearOpMode opMode;
 
     @Override
     public void runOpMode() {
-        super.runOpMode();
-        SixWheelDriveControls driveTrain = new SixWheelDriveControls();
-        driveTrain.initialize(hardwareMap, this);
+        LegolessRobot robot = new LegolessRobot(hardwareMap, this);
 
         double driveFactor = 0.7;
 
@@ -35,6 +27,9 @@ public class LegolessTeleOp extends LegolessRobot{
         telemetry.update();
 
         waitForStart();
+
+        boolean rightButtonDebouce = false;
+        boolean leftButtonDebouce = false;
 
         while (opModeIsActive()){
 
@@ -60,52 +55,52 @@ public class LegolessTeleOp extends LegolessRobot{
 
             //Nudge controls
             if (gamepad1.dpad_up){
-                driveTrain.rightFrontMotor.setPower(0.25);
-                driveTrain.rightBackMotor.setPower(0.25);
-                driveTrain.leftFrontMotor.setPower(0.25);
-                driveTrain.leftBackMotor.setPower(0.25);
+                robot.rightFrontMotor.setPower(0.25);
+                robot.rightBackMotor.setPower(0.25);
+                robot.leftFrontMotor.setPower(0.25);
+                robot.leftBackMotor.setPower(0.25);
             } else if (gamepad1.dpad_down){
-                driveTrain.rightFrontMotor.setPower(-0.25);
-                driveTrain.rightBackMotor.setPower(-0.25);
-                driveTrain.leftFrontMotor.setPower(-0.25);
-                driveTrain.leftBackMotor.setPower(-0.25);
+                robot.rightFrontMotor.setPower(-0.25);
+                robot.rightBackMotor.setPower(-0.25);
+                robot.leftFrontMotor.setPower(-0.25);
+                robot.leftBackMotor.setPower(-0.25);
             } else if (gamepad1.dpad_left){
-                driveTrain.rightFrontMotor.setPower(0.25);
-                driveTrain.rightBackMotor.setPower(0.25);
-                driveTrain.leftFrontMotor.setPower(-0.25);
-                driveTrain.leftBackMotor.setPower(-0.25);
+                robot.rightFrontMotor.setPower(0.25);
+                robot.rightBackMotor.setPower(0.25);
+                robot.leftFrontMotor.setPower(-0.25);
+                robot.leftBackMotor.setPower(-0.25);
             } else if (gamepad1.dpad_right){
-                driveTrain.rightFrontMotor.setPower(-0.25);
-                driveTrain.rightBackMotor.setPower(-0.25);
-                driveTrain.leftFrontMotor.setPower(0.25);
-                driveTrain.leftBackMotor.setPower(0.25);
+                robot.rightFrontMotor.setPower(-0.25);
+                robot.rightBackMotor.setPower(-0.25);
+                robot.leftFrontMotor.setPower(0.25);
+                robot.leftBackMotor.setPower(0.25);
             } else {
                 //Drive Controls
-                driveTrain.rightFrontMotor.setPower(rightStickAverage.getAverage() * driveFactor);
-                driveTrain.rightBackMotor.setPower(rightStickAverage.getAverage() * driveFactor);
+                robot.rightFrontMotor.setPower(rightStickAverage.getAverage() * driveFactor);
+                robot.rightBackMotor.setPower(rightStickAverage.getAverage() * driveFactor);
 
-                driveTrain.leftFrontMotor.setPower(leftStickAverage.getAverage() * driveFactor);
-                driveTrain.leftBackMotor.setPower(leftStickAverage.getAverage() * driveFactor);
+                robot.leftFrontMotor.setPower(leftStickAverage.getAverage() * driveFactor);
+                robot.leftBackMotor.setPower(leftStickAverage.getAverage() * driveFactor);
             }
             //End Nudge/Drive Controls
 
 
             //Harvester Controls
-            harvesterWinch.setPower(gamepad2.left_stick_y);
+            robot.harvester.harvesterWinch.setPower(gamepad2.left_stick_y);
 
             if (gamepad2.a){
-                rightServoPosition = POSITION_CLOSED;
-                leftServoPosition = POSITION_CLOSED;
+                robot.harvester.rightServoPosition = Harvester.POSITION_CLOSED;
+                robot.harvester.leftServoPosition = Harvester.POSITION_CLOSED;
             }
 
             if (gamepad2.b){
-                rightServoPosition = POSITION_OPEN;
-                leftServoPosition = POSITION_OPEN;
+                robot.harvester.rightServoPosition = Harvester.POSITION_OPEN;
+                robot.harvester.leftServoPosition = Harvester.POSITION_OPEN;
             }
 
             if (gamepad2.right_bumper){
                 if (!rightButtonDebouce){
-                    leftServoPosition = !leftServoPosition;
+                    robot.harvester.toggleRight();
                     rightButtonDebouce = true;
                 }
             } else {
@@ -114,26 +109,16 @@ public class LegolessTeleOp extends LegolessRobot{
 
             if (gamepad2.left_bumper){
                 if (!leftButtonDebouce){
-                    rightServoPosition = !rightServoPosition;
+                    robot.harvester.toggleLeft();
                     leftButtonDebouce = true;
                 }
             } else {
-                rightButtonDebouce = false;
+                leftButtonDebouce = false;
             }
 
-            if (rightServoPosition == POSITION_CLOSED){
-                rightServo.setPosition(0.9);
-            } else {
-                rightServo.setPosition(0.5);
-            }
 
-            if (leftServoPosition == POSITION_CLOSED){
-                leftServo.setPosition(0.1);
-            } else {
-                leftServo.setPosition(0.5);
-            }
             //End Harvester Controls
-
+            /*
             //Jewel Servo Controls
             if (gamepad1.left_bumper){
                 if (!jewelServoDebounce){
@@ -178,7 +163,7 @@ public class LegolessTeleOp extends LegolessRobot{
 
             //End Relic Controls
 
-
+            */
             sleep(1 / 2);
         }
     }
