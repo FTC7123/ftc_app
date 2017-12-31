@@ -16,18 +16,18 @@ public class RelicArm {
     public static final boolean POSITION_OPEN = false;
     public static final boolean POSITION_CLOSED = true;
 
-    public static final double RELIC_CLAW_OPEN = 0.75;
+    public static final double RELIC_CLAW_OPEN = 0.85;
     public static final double RELIC_CLAW_CLOSED = 0.38;
 
 
 
     public DcMotor relicWinch;
-    private Servo relicArmServo;
-    private Servo relicClawServo;
+    public Servo relicArmServo;
+    public Servo relicClawServo;
 
-    public static final double POSITION_STOW = 0.015;
-    public static final double POSITION_UP = 0.05;
-    public static final double POSITION_DOWN = 0.13;
+    public static final double POSITION_STOW = 0;
+    public static final double POSITION_UP = 0.04;
+    public static final double POSITION_DOWN = 0.11;
 
     public boolean relicClawPosition = POSITION_OPEN;
 
@@ -40,7 +40,9 @@ public class RelicArm {
         setRelicClaw(POSITION_OPEN);
     }
 
-    public void setRelicArm(double position){}
+    public void setRelicArm(double position) {
+        relicArmServo.setPosition(position);
+    }
 
     public void setRelicClaw(boolean position){
         relicClawPosition = position;

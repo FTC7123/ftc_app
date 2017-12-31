@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.hardware.components.Harvester;
+import org.firstinspires.ftc.teamcode.hardware.components.RelicArm;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 import org.firstinspires.ftc.teamcode.util.MovingAverage;
 
@@ -20,8 +21,8 @@ public class LegolessTeleOp extends LinearOpMode {
 
         double driveFactor = 0.7;
 
-        MovingAverage rightStickAverage = new MovingAverage(20);
-        MovingAverage leftStickAverage = new MovingAverage(20);
+        MovingAverage rightStickAverage = new MovingAverage(5);
+        MovingAverage leftStickAverage = new MovingAverage(5);
 
         telemetry.addData("Drive Mode: Sport", driveFactor);
         telemetry.update();
@@ -55,25 +56,25 @@ public class LegolessTeleOp extends LinearOpMode {
 
             //Nudge controls
             if (gamepad1.dpad_up){
-                robot.rightFrontMotor.setPower(0.25);
-                robot.rightBackMotor.setPower(0.25);
-                robot.leftFrontMotor.setPower(0.25);
-                robot.leftBackMotor.setPower(0.25);
+                robot.rightFrontMotor.setPower(-0.25);
+                robot.rightBackMotor.setPower(-0.25);
+                robot.leftFrontMotor.setPower(-0.25);
+                robot.leftBackMotor.setPower(-0.25);
             } else if (gamepad1.dpad_down){
-                robot.rightFrontMotor.setPower(-0.25);
-                robot.rightBackMotor.setPower(-0.25);
-                robot.leftFrontMotor.setPower(-0.25);
-                robot.leftBackMotor.setPower(-0.25);
-            } else if (gamepad1.dpad_left){
                 robot.rightFrontMotor.setPower(0.25);
                 robot.rightBackMotor.setPower(0.25);
-                robot.leftFrontMotor.setPower(-0.25);
-                robot.leftBackMotor.setPower(-0.25);
-            } else if (gamepad1.dpad_right){
+                robot.leftFrontMotor.setPower(0.25);
+                robot.leftBackMotor.setPower(0.25);
+            } else if (gamepad1.dpad_left){
                 robot.rightFrontMotor.setPower(-0.25);
                 robot.rightBackMotor.setPower(-0.25);
                 robot.leftFrontMotor.setPower(0.25);
                 robot.leftBackMotor.setPower(0.25);
+            } else if (gamepad1.dpad_right){
+                robot.rightFrontMotor.setPower(0.25);
+                robot.rightBackMotor.setPower(0.25);
+                robot.leftFrontMotor.setPower(-0.25);
+                robot.leftBackMotor.setPower(-0.25);
             } else {
                 //Drive Controls
                 robot.rightFrontMotor.setPower(rightStickAverage.getAverage() * driveFactor);
@@ -116,53 +117,51 @@ public class LegolessTeleOp extends LinearOpMode {
 
 
             //End Harvester Controls
-            /*
+
             //Jewel Servo Controls
+            /*
             if (gamepad1.left_bumper){
-                if (!jewelServoDebounce){
-                    jewelServoPosition = !jewelServoPosition;
-                    jewelServoDebounce = true;
+                    if (!jewelServoDebounce){
+                        jewelServoPosition = !jewelServoPosition;
+                        jewelServoDebounce = true;
+                    }
+                } else {
+                    jewelServoDebounce = false;
                 }
-            } else {
-                jewelServoDebounce = false;
-            }
 
-            if (jewelServoPosition = POSITION_UP){
-                jewelServo.setPosition(0);
-            }
+                if (jewelServoPosition = POSITION_UP){
+                    jewelServo.setPosition(0);
+                }
 
-            if (jewelServoPosition = POSITION_DOWN){
-                jewelServo.setPosition(1);
-            }
+                if (jewelServoPosition = POSITION_DOWN){
+                    jewelServo.setPosition(1);
+            } */
             //End Jewel Servo Controls
 
             //Relic Controls
-            relicWinch.setPower(gamepad2.right_stick_y);
+            robot.relicArm.relicWinch.setPower(gamepad2.right_stick_y);
 
             if (gamepad2.dpad_right) {
-                relicArmServo.setPosition(relicArmBack);
+                robot.relicArm.setRelicArm(RelicArm.POSITION_STOW);
             }
 
             if (gamepad2.dpad_up) {
-                relicArmServo.setPosition(relicArmUp);
+                robot.relicArm.setRelicArm(RelicArm.POSITION_UP);
             }
 
             if (gamepad2.dpad_left) {
-                relicArmServo.setPosition(relicArmDown);
+                robot.relicArm.setRelicArm(RelicArm.POSITION_DOWN);
             }
 
             if (gamepad2.x) {
-                relicClawServo.setPosition(0.75);
+                robot.relicArm.setRelicClaw(RelicArm.POSITION_CLOSED);
             }
 
             if (gamepad2.y) {
-                relicClawServo.setPosition(0.38);
+                robot.relicArm.setRelicClaw(RelicArm.POSITION_OPEN);
             }
 
             //End Relic Controls
-
-            */
-            sleep(1 / 2);
         }
     }
 }
