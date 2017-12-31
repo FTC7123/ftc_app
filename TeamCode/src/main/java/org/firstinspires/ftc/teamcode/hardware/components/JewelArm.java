@@ -24,7 +24,6 @@ public class JewelArm {
 
     public JewelArm (HardwareMap hardwareMap, LegolessRobot opMode){
         jewelArm = hardwareMap.servo.get("jewelArm");
-
         jewelArm.setPosition(JEWEL_ARM_UP);
     }
 
