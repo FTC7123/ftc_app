@@ -18,27 +18,9 @@ public class LegolessAutonomousTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         LegolessRobot robot = new LegolessRobot(hardwareMap, this);
 
-        fellowshipVuforia = new FellowshipVuforia(hardwareMap, this);
-        waitForStart();
 
-        sleep(1000);
+        robot.drive(1, 0.2);
 
-        fellowshipVuforia.findTarget();
-
-        sleep(1000);
-
-        if (fellowshipVuforia.targetNumber == 1) {
-            telemetry.addData("Target Number: ", fellowshipVuforia.targetNumber);
-            telemetry.update();
-        } else if (fellowshipVuforia.targetNumber == 2) {
-            telemetry.addData("Target Number: ", fellowshipVuforia.targetNumber);
-            telemetry.update();
-        } else if (fellowshipVuforia.targetNumber == 3) {
-            telemetry.addData("Target Number: ", fellowshipVuforia.targetNumber);
-            telemetry.update();
-        } else {
-            telemetry.addData("NO TARGET VISIBLE ", null);
-            telemetry.update();
-        }
+        //robot.turnLeft(90, 0.2);
     }
 }

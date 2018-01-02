@@ -119,24 +119,24 @@ public class LegolessTeleOp extends LinearOpMode {
             //End Harvester Controls
 
             //Jewel Servo Controls
-            /*
-            if (gamepad1.left_bumper){
-                    if (!jewelServoDebounce){
-                        jewelServoPosition = !jewelServoPosition;
-                        jewelServoDebounce = true;
-                    }
-                } else {
-                    jewelServoDebounce = false;
-                }
-
-                if (jewelServoPosition = POSITION_UP){
-                    jewelServo.setPosition(0);
-                }
-
-                if (jewelServoPosition = POSITION_DOWN){
-                    jewelServo.setPosition(1);
-            } */
-            //End Jewel Servo Controls
+//
+//            if (gamepad1.left_bumper){
+//                    if (!jewelServoDebounce){
+//                        jewelServoPosition = !jewelServoPosition;
+//                        jewelServoDebounce = true;
+//                    }
+//                } else {
+//                    jewelServoDebounce = false;
+//                }
+//
+//                if (jewelServoPosition = POSITION_UP){
+//                    jewelServo.setPosition(0);
+//                }
+//
+//                if (jewelServoPosition = POSITION_DOWN){
+//                    jewelServo.setPosition(1);
+//            }
+//            //End Jewel Servo Controls
 
             //Relic Controls
             robot.relicArm.relicWinch.setPower(-gamepad2.left_stick_y);
