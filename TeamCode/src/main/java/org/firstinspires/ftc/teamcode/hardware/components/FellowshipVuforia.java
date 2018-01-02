@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
+import org.firstinspires.ftc.teamcode.autonomous.LegolessAutonomousTest;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 
 /**
@@ -20,7 +21,7 @@ public class FellowshipVuforia {
 
     public int targetNumber = 0;
 
-    public FellowshipVuforia(HardwareMap hardwareMap, LegolessRobot opMode){
+    public FellowshipVuforia(HardwareMap hardwareMap, LegolessAutonomousTest opMode) {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 

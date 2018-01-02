@@ -21,8 +21,8 @@ public class LegolessTeleOp extends LinearOpMode {
 
         double driveFactor = 0.7;
 
-        MovingAverage rightStickAverage = new MovingAverage(5);
-        MovingAverage leftStickAverage = new MovingAverage(5);
+        MovingAverage rightStickAverage = new MovingAverage(3);
+        MovingAverage leftStickAverage = new MovingAverage(3);
 
         telemetry.addData("Drive Mode: Sport", driveFactor);
         telemetry.update();
@@ -87,7 +87,7 @@ public class LegolessTeleOp extends LinearOpMode {
 
 
             //Harvester Controls
-            robot.harvester.harvesterWinch.setPower(gamepad2.left_stick_y);
+            robot.harvester.harvesterWinch.setPower(-gamepad2.right_stick_y);
 
             if (gamepad2.a){
                 robot.harvester.closeHarvester();
@@ -139,7 +139,7 @@ public class LegolessTeleOp extends LinearOpMode {
             //End Jewel Servo Controls
 
             //Relic Controls
-            robot.relicArm.relicWinch.setPower(gamepad2.right_stick_y);
+            robot.relicArm.relicWinch.setPower(-gamepad2.left_stick_y);
 
             if (gamepad2.dpad_right) {
                 robot.relicArm.setRelicArm(RelicArm.POSITION_STOW);

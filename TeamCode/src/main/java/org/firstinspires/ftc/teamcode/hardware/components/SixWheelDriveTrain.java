@@ -28,7 +28,7 @@ public class SixWheelDriveTrain {
     public DcMotor leftFrontMotor;
     public DcMotor leftBackMotor;
 
-    public BNO055IMU imu;
+    //public BNO055IMU imu;
 
     public double currentAngle;
     public double lastAngle;
@@ -51,13 +51,13 @@ public class SixWheelDriveTrain {
         rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        imu = hardwareMap.get(BNO055IMU.class, "IMU");
+        //imu = hardwareMap.get(BNO055IMU.class, "IMU");
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         parameters.temperatureUnit = BNO055IMU.TempUnit.CELSIUS;
 
-        imu.initialize(parameters);
+        //imu.initialize(parameters);
 
     }
 
@@ -103,31 +103,31 @@ public class SixWheelDriveTrain {
         leftBackMotor.setPower(0);
     }
 
-    public double getAngularOrientation(){
-        return imu.getAngularOrientation().toAxesReference(AxesReference.INTRINSIC).toAxesOrder(AxesOrder.XYZ).thirdAngle;
-    }
+//    public double getAngularOrientation() {
+//        //imu.getAngularOrientation().toAxesReference(AxesReference.INTRINSIC).toAxesOrder(AxesOrder.XYZ).thirdAngle;
+//    }
 
-    public void update(){
-        lastAngle = currentAngle;
-        currentAngle = getAngularOrientation();
+//    public void update(){
+//        lastAngle = currentAngle;
+//        currentAngle = getAngularOrientation();
+//
+//        if(Math.abs(currentAngle - lastAngle) > THRESH && currentAngle > lastAngle){
+//        }
+//    }
+//
+//    public void turn(double degrees, double speed){
+//        degrees = targetDegrees;
+//        if ((currentAngle - lastAngle) < targetDegrees){
+//            rightFrontMotor.setPower(speed);
+//            rightBackMotor.setPower(speed);
+//            leftFrontMotor.setPower(speed);
+//            leftBackMotor.setPower(speed);
+//        } else {
+//            rightFrontMotor.setPower(0);
+//            rightBackMotor.setPower(0);
+//            leftFrontMotor.setPower(0);
+//            leftBackMotor.setPower(0);
+//        }
 
-        if(Math.abs(currentAngle - lastAngle) > THRESH && currentAngle > lastAngle){
-        }
-    }
-
-    public void turn(double degrees, double speed){
-        degrees = targetDegrees;
-        if ((currentAngle - lastAngle) < targetDegrees){
-            rightFrontMotor.setPower(speed);
-            rightBackMotor.setPower(speed);
-            leftFrontMotor.setPower(speed);
-            leftBackMotor.setPower(speed);
-        } else {
-            rightFrontMotor.setPower(0);
-            rightBackMotor.setPower(0);
-            leftFrontMotor.setPower(0);
-            leftBackMotor.setPower(0);
-        }
-
-    }
+    //}
 }

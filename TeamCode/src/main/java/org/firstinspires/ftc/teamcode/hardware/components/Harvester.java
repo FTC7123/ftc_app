@@ -16,10 +16,10 @@ public class Harvester {
     public static final boolean POSITION_OPEN = false;
     public static final boolean POSITION_CLOSED = true;
 
-    public static final double RIGHT_ARM_CLOSED = 0.9;
+    public static final double RIGHT_ARM_CLOSED = 1;
     public static final double RIGHT_ARM_OPENED = 0.7;
 
-    public static final double LEFT_ARM_CLOSED = 0.1;
+    public static final double LEFT_ARM_CLOSED = 0;
     public static final double LEFT_ARM_OPENED = 0.3;
 
     public DcMotor harvesterWinch;

@@ -28,7 +28,7 @@ public class LegolessRobot extends SixWheelDriveTrain {
     public Harvester harvester;
     public JewelArm jewelArm;
     public RelicArm relicArm;
-    public FellowshipVuforia fellowshipVuforia;
+
 
     public LegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
@@ -36,6 +36,6 @@ public class LegolessRobot extends SixWheelDriveTrain {
         harvester = new Harvester(hardwareMap, this);
         jewelArm = new JewelArm(hardwareMap, this);
         relicArm = new RelicArm(hardwareMap, this);
-        fellowshipVuforia = new FellowshipVuforia(hardwareMap, this);
+
     }
 }
