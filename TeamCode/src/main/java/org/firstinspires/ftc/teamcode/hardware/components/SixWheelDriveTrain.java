@@ -95,6 +95,7 @@ public class SixWheelDriveTrain {
             opMode.telemetry.addData("L1", leftFrontMotor.getCurrentPosition());
             opMode.telemetry.addData("L2", leftBackMotor.getCurrentPosition());
             opMode.telemetry.update();
+            //Probably can remove telemetry
         }
 
         rightFrontMotor.setPower(0);
