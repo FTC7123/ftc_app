@@ -57,7 +57,7 @@ public class SixWheelDriveTrain {
     }
 
     public void drive(double meters, double speed) {
-        meters = meters * 4.1772973503558 * 560;
+        meters = meters * 4.1772973503558 * 270;
 
         rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
