@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.teamcode.testing.VuforiaTest;
-import org.firstinspires.ftc.teamcode.util.FellowshipIMU;
 
 
 /**
@@ -31,6 +30,7 @@ public class SixWheelDriveTrain {
     public DcMotor leftFrontMotor;
     public DcMotor leftBackMotor;
 
+    /*
     public FellowshipIMU imu;
 
     public double currentAngle;
@@ -41,6 +41,7 @@ public class SixWheelDriveTrain {
     public double firstAngle;
 
     public static final double THRESH = 180;
+*/
 
     public SixWheelDriveTrain (HardwareMap hardwareMap, LinearOpMode opMode){
         this.opMode = opMode;
@@ -52,8 +53,8 @@ public class SixWheelDriveTrain {
 
         leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        imu = new FellowshipIMU();
-        imu.initialize(hardwareMap);
+//        imu = new FellowshipIMU();
+//        imu.initialize(hardwareMap);
     }
 
     public void drive(double meters, double speed) {
@@ -115,6 +116,7 @@ public class SixWheelDriveTrain {
         leftBackMotor.setPower(power);
     }
 
+    /*
     public void turnRight(double angle, double speed) {
         rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -167,5 +169,5 @@ public class SixWheelDriveTrain {
 
         setRightPower(0);
         setLeftPower(0);
-    }
+    }*/
 }

@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 /**
  * Created by fello on 1/5/2017.
  */
-
+/*
 public class FellowshipIMU {
 
     public BNO055IMU imu;
@@ -53,6 +53,7 @@ public class FellowshipIMU {
             currentAngle += 2 * Math.PI;
         }
 
+
         if (Math.abs(currentAngle - lastAngle) > THRESH && currentAngle > lastAngle) {
             if (LOGGING) Log.d("IMU", "************* OVERFLOW *************");
             piMultiplier -= 1;
@@ -75,4 +76,4 @@ public class FellowshipIMU {
     public double getDeltaAngle() {
         return currentAngle - firstAngle;
     }
-}
+} */

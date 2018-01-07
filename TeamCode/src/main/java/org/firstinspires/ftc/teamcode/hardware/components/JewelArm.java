@@ -15,8 +15,8 @@ public class JewelArm {
     public static final boolean POSITION_UP = false;
     public static final boolean POSITION_DOWN = true;
 
-    public static final double JEWEL_ARM_UP = 1;
-    public static final double JEWEL_ARM_DOWN = 0;
+    public static final double JEWEL_ARM_UP = 0.2;
+    public static final double JEWEL_ARM_DOWN = 0.8;
 
     private Servo jewelArm;
 
