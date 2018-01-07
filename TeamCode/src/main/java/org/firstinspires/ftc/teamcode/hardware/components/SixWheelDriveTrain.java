@@ -99,8 +99,6 @@ public class SixWheelDriveTrain {
 
         opMode.telemetry.update();
 
-        opMode.sleep(10000);
-
         rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 

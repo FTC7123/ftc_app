@@ -8,7 +8,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 
 /**
- * Created by thomaslauer on 12/30/17.
+ * Created by andre on 12/30/17.
+ *
+ *  
  */
 
 public class Harvester {
@@ -23,16 +25,22 @@ public class Harvester {
     public static final double LEFT_ARM_OPENED = 0.3;
 
     public DcMotor harvesterWinch;
-    private Servo rightServo;
-    private Servo leftServo;
+    private Servo rightBottomServo;
+    private Servo rightTopServo;
+
+    private Servo leftBottomServo;
+    private Servo leftTopServo;
 
     public boolean rightServoPosition = POSITION_OPEN;
     public boolean leftServoPosition = POSITION_OPEN;
 
     public Harvester(HardwareMap hardwareMap, LegolessRobot opMode) {
         harvesterWinch = hardwareMap.dcMotor.get("harvesterWinch");
-        rightServo = hardwareMap.servo.get("rightServo");
-        leftServo = hardwareMap.servo.get("leftServo");
+
+        rightBottomServo = hardwareMap.servo.get("rightBottomServo");
+        rightTopServo = hardwareMap.servo.get("rightTopServo");
+        leftBottomServo = hardwareMap.servo.get("leftBottomServo");
+        leftTopServo = hardwareMap.servo.get("leftTopServo");
 
         openHarvester();
     }
@@ -58,18 +66,22 @@ public class Harvester {
     public void setRight(boolean position) {
         rightServoPosition = position;
         if (position == POSITION_CLOSED){
-            rightServo.setPosition(RIGHT_ARM_CLOSED);
+            rightBottomServo.setPosition(RIGHT_ARM_CLOSED);
+            rightTopServo.setPosition(RIGHT_ARM_CLOSED);
         } else {
-            rightServo.setPosition(RIGHT_ARM_OPENED);
+            rightBottomServo.setPosition(RIGHT_ARM_OPENED);
+            rightTopServo.setPosition(RIGHT_ARM_CLOSED);
         }
     }
 
     public void setLeft(boolean position) {
         leftServoPosition = position;
         if (position == POSITION_CLOSED){
-            leftServo.setPosition(LEFT_ARM_CLOSED);
+            leftBottomServo.setPosition(LEFT_ARM_CLOSED);
+            leftTopServo.setPosition(LEFT_ARM_CLOSED);
         } else {
-            leftServo.setPosition(LEFT_ARM_OPENED);
+            leftBottomServo.setPosition(LEFT_ARM_OPENED);
+            leftTopServo.setPosition(LEFT_ARM_CLOSED);
         }
     }
 }

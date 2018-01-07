@@ -32,6 +32,5 @@ public class LegolessRobot extends SixWheelDriveTrain {
         Log.d("TRACE", "Legoless ctor 3");
         relicArm = new RelicArm(hardwareMap, this);
         Log.d("TRACE", "Legoless ctor 4");
-
     }
 }

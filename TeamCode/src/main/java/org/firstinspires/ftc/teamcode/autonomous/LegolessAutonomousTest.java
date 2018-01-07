@@ -18,6 +18,16 @@ public class LegolessAutonomousTest extends LinearOpMode {
 
         waitForStart();
 
-        robot.drive(1, 0.2);
+        int i = 0;
+
+        while (i < 4 && opModeIsActive()) {
+            robot.drive(1, 0.2);
+            sleep(1000);
+            robot.turnLeft(90, 0.2);
+            sleep(1000);
+        }
+
+        robot.setRightPower(0);
+        robot.setLeftPower(0);
     }
 }
