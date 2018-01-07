@@ -32,7 +32,7 @@ public class SixWheelDriveTrain {
     public DcMotor leftFrontMotor;
     public DcMotor leftBackMotor;
 
-    private static final double wheelCircumference = 12.566;
+    private static final double wheelCircumference = 31.919; //measured in cm
 
     /*
     public FellowshipIMU imu;
@@ -70,7 +70,7 @@ public class SixWheelDriveTrain {
     }
 
     public void drive(double meters, double speed) {
-        meters = meters * wheelCircumference * 530;
+        meters = meters * 100 / wheelCircumference * 530;
 
         rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

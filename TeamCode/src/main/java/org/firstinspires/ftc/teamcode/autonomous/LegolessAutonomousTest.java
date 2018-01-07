@@ -1,13 +1,9 @@
 package org.firstinspires.ftc.teamcode.autonomous;
 
-import android.util.Log;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.hardware.components.FellowshipVuforia;
+import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegolessRobot;
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
 
 /**
@@ -18,12 +14,10 @@ public class LegolessAutonomousTest extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        LegolessRobot robot = new LegolessRobot(hardwareMap, this);
+        AutonomousLegolessRobot robot = new AutonomousLegolessRobot(hardwareMap, this);
 
         waitForStart();
 
         robot.drive(1, 0.2);
-
-
     }
 }

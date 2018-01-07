@@ -4,16 +4,8 @@ package org.firstinspires.ftc.teamcode.hardware.configurations;
 import android.util.Log;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
-import org.firstinspires.ftc.teamcode.hardware.components.FellowshipVuforia;
 import org.firstinspires.ftc.teamcode.hardware.components.Harvester;
 import org.firstinspires.ftc.teamcode.hardware.components.JewelArm;
 import org.firstinspires.ftc.teamcode.hardware.components.RelicArm;
@@ -30,7 +22,6 @@ public class LegolessRobot extends SixWheelDriveTrain {
     public Harvester harvester;
     public JewelArm jewelArm;
     public RelicArm relicArm;
-
 
     public LegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
