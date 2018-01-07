@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.hardware.components.FellowshipVuforia;
@@ -19,12 +20,10 @@ public class LegolessAutonomousTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         LegolessRobot robot = new LegolessRobot(hardwareMap, this);
 
-        Log.d("Autonomous Test", "*****ROBOT INITIALIZED*****");
-
         waitForStart();
 
-        Log.d("Autonomous Test", "*****OPMODE STARTED*****");
-
         robot.drive(1, 0.2);
+
+
     }
 }

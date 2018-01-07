@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.hardware.components;
 
+import android.util.Log;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -30,6 +32,8 @@ public class SixWheelDriveTrain {
     public DcMotor leftFrontMotor;
     public DcMotor leftBackMotor;
 
+    private static final double wheelCircumference = 12.566;
+
     /*
     public FellowshipIMU imu;
 
@@ -57,8 +61,16 @@ public class SixWheelDriveTrain {
 //        imu.initialize(hardwareMap);
     }
 
+    public void resetDriveEncoders() {
+        rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
     public void drive(double meters, double speed) {
-        meters = meters * 4.1772973503558 * 270;
+        meters = meters * wheelCircumference * 530;
 
         rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -72,11 +84,20 @@ public class SixWheelDriveTrain {
         leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        rightFrontMotor.setTargetPosition((int) meters + rightFrontMotor.getCurrentPosition());
-        rightBackMotor.setTargetPosition((int) meters + rightBackMotor.getCurrentPosition());
+        rightFrontMotor.setTargetPosition((int) meters);
+        rightBackMotor.setTargetPosition((int) meters);
 
-        leftFrontMotor.setTargetPosition((int) meters + leftFrontMotor.getCurrentPosition());
-        leftBackMotor.setTargetPosition((int) meters + leftBackMotor.getCurrentPosition());
+        leftFrontMotor.setTargetPosition((int) meters);
+        leftBackMotor.setTargetPosition((int) meters);
+
+        opMode.telemetry.addData("R1 Position", rightFrontMotor.getTargetPosition());
+        opMode.telemetry.addData("R2 Position", rightBackMotor.getTargetPosition());
+        opMode.telemetry.addData("L1 Position", leftFrontMotor.getTargetPosition());
+        opMode.telemetry.addData("L2 Position", leftBackMotor.getTargetPosition());
+
+        opMode.telemetry.update();
+
+        opMode.sleep(10000);
 
         rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -95,8 +116,9 @@ public class SixWheelDriveTrain {
             opMode.telemetry.addData("R2", rightBackMotor.getCurrentPosition());
             opMode.telemetry.addData("L1", leftFrontMotor.getCurrentPosition());
             opMode.telemetry.addData("L2", leftBackMotor.getCurrentPosition());
+
             opMode.telemetry.update();
-            //Probably can remove telemetry
+
         }
 
         rightFrontMotor.setPower(0);
