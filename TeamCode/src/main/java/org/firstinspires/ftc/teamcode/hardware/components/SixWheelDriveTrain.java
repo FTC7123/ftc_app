@@ -34,6 +34,8 @@ public class SixWheelDriveTrain {
 
     private static final double wheelCircumference = 31.919; //measured in cm
 
+    private static final double tickPerDegree = 5.8395; //for Neverest Planitary 20 motors with a 12 cm wheel, 120 cm turn circumference
+
     /*
     public FellowshipIMU imu;
 
@@ -136,6 +138,70 @@ public class SixWheelDriveTrain {
     public void setLeftPower(double power) {
         leftFrontMotor.setPower(power);
         leftBackMotor.setPower(power);
+    }
+
+    public void turnRight(double degrees, double speed) {
+        degrees = degrees * tickPerDegree;
+
+        resetDriveEncoders();
+
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        rightFrontMotor.setTargetPosition((int) -degrees);
+        rightBackMotor.setTargetPosition((int) -degrees);
+        leftFrontMotor.setTargetPosition((int) degrees);
+        leftBackMotor.setTargetPosition((int) degrees);
+
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        rightFrontMotor.setPower(speed);
+        rightBackMotor.setPower(speed);
+        leftFrontMotor.setPower(speed);
+        leftBackMotor.setPower(speed);
+
+        while (rightFrontMotor.isBusy() && rightBackMotor.isBusy() && leftFrontMotor.isBusy() && leftBackMotor.isBusy() && opMode.opModeIsActive()) {
+        }
+
+        setRightPower(0);
+        setLeftPower(0);
+    }
+
+    public void turnLeft(double degrees, double speed) {
+        degrees = degrees * tickPerDegree;
+
+        resetDriveEncoders();
+
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        rightFrontMotor.setTargetPosition((int) degrees);
+        rightBackMotor.setTargetPosition((int) degrees);
+        leftFrontMotor.setTargetPosition((int) -degrees);
+        leftBackMotor.setTargetPosition((int) -degrees);
+
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        rightFrontMotor.setPower(speed);
+        rightBackMotor.setPower(speed);
+        leftFrontMotor.setPower(speed);
+        leftBackMotor.setPower(speed);
+
+        while (rightFrontMotor.isBusy() && rightBackMotor.isBusy() && leftFrontMotor.isBusy() && leftBackMotor.isBusy() && opMode.opModeIsActive()) {
+        }
+
+        setRightPower(0);
+        setLeftPower(0);
     }
 
     /*

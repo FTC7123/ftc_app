@@ -12,8 +12,8 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
  */
 
 public class FellowshipUltrasonicArray {
-    public UltrasonicSensor frontUltrasonicSensor;
-    public UltrasonicSensor backUltrasonicSensor;
+    //public UltrasonicSensor frontUltrasonicSensor;
+    //public UltrasonicSensor backUltrasonicSensor;
 
     public double frontUltrasonicSensorValue = 0;
     public double backUltrasonicSensorValue = 0;
@@ -22,21 +22,19 @@ public class FellowshipUltrasonicArray {
 
 
     public FellowshipUltrasonicArray(HardwareMap hardwareMap, AutonomousLegolessRobot opMode) {
-        frontUltrasonicSensor = hardwareMap.ultrasonicSensor.get("frontUltrasonic");
-        backUltrasonicSensor = hardwareMap.ultrasonicSensor.get("backUltrasonic");
+        //frontUltrasonicSensor = hardwareMap.ultrasonicSensor.get("frontUltrasonic");
+        //backUltrasonicSensor = hardwareMap.ultrasonicSensor.get("backUltrasonic");
     }
 
     public void getFrontUltrasonicDistance() {
-        frontUltrasonicSensorValue = frontUltrasonicSensor.getUltrasonicLevel();
+        //frontUltrasonicSensorValue = frontUltrasonicSensor.getUltrasonicLevel();
     }
 
     public void getBackUltrasonicDistance() {
-        backUltrasonicSensorValue = backUltrasonicSensor.getUltrasonicLevel();
+        //backUltrasonicSensorValue = backUltrasonicSensor.getUltrasonicLevel();
     }
 
     public void getUltrasonicDifference() {
         ultrasonicDifference = frontUltrasonicSensorValue - backUltrasonicSensorValue;
     }
-
-
 }
