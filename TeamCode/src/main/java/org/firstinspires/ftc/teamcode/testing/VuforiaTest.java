@@ -43,6 +43,22 @@ public class VuforiaTest extends LinearOpMode {
                 telemetry.addData("Vumark", "%s visible", vuMark);
                 telemetry.update();
             }
+
+            if (vuMark == RelicRecoveryVuMark.LEFT) {
+                targetNumber = 1;
+                telemetry.addData("Left ", targetNumber);
+                telemetry.update();
+            }
+            if (vuMark == RelicRecoveryVuMark.CENTER) {
+                targetNumber = 2;
+                telemetry.addData("Center ", targetNumber);
+                telemetry.update();
+            }
+            if (vuMark == RelicRecoveryVuMark.RIGHT) {
+                targetNumber = 3;
+                telemetry.addData("Right ", targetNumber);
+                telemetry.update();
+            }
         }
     }
 }

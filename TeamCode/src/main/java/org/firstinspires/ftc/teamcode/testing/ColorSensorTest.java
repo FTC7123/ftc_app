@@ -17,14 +17,20 @@ public class ColorSensorTest extends LinearOpMode {
 
         waitForStart();
 
-        while (opModeIsActive()) {
-            robot.jewelArm.colorSensor.enableLed(true);
+        robot.jewelArm.testColor();
 
-            telemetry.addData("Red Value: ", robot.jewelArm.colorSensor.red());
-            telemetry.addData("Green Value: ", robot.jewelArm.colorSensor.green());
-            telemetry.addData("Blue Value: ", robot.jewelArm.colorSensor.blue());
-
+        if (robot.jewelArm.colorRecorded == robot.jewelArm.COLOR_RED) {
+            telemetry.addData("Red Visible ", robot.jewelArm.colorSensor.red());
+            telemetry.addData("     Blue Value: ", robot.jewelArm.colorSensor.blue());
             telemetry.update();
+            sleep(3000);
+        } else if (robot.jewelArm.colorRecorded == robot.jewelArm.COLOR_BLUE) {
+            telemetry.addData("Blue Visible ", robot.jewelArm.colorSensor.blue());
+            telemetry.addData("     Red Value: ", robot.jewelArm.colorSensor.red());
+            telemetry.update();
+            sleep(3000);
+        } else {
         }
+
     }
 }

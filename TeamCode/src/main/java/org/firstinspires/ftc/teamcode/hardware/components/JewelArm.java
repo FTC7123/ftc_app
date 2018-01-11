@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.hardware.components;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -20,14 +21,15 @@ public class JewelArm {
     public static final double JEWEL_ARM_UP = 0.8;
     public static final double JEWEL_ARM_DOWN = 0.7;
 
-    /*
-    public enum colorRecorded{
-        COLOR_RED, COLOR_BLUE, COLOR_UNDETERMINED
-    }
+    public static final boolean COLOR_RED = true;
+    public static final boolean COLOR_BLUE = false;
 
-    This is testing stuff that doesn't work. Needs to be redone.
+    public boolean colorRecorded = COLOR_RED;
 
-    */
+    LinearOpMode opmode;
+
+
+
 
     private Servo jewelArm;
 
@@ -40,7 +42,7 @@ public class JewelArm {
 
         //jewelArm.setPosition(JEWEL_ARM_UP);
 
-        colorSensor = (ColorSensor) hardwareMap.i2cDevice.get("colorSensor");
+        colorSensor = hardwareMap.colorSensor.get("colorSensor");
         colorSensor.enableLed(true);
     }
 
@@ -65,7 +67,16 @@ public class JewelArm {
     public void testColor(){
         if (colorSensor.red() > colorSensor.blue()){
 
+
+            colorRecorded = COLOR_RED;
+
+        } else if (colorSensor.red() < colorSensor.blue()) {
+
+
+            colorRecorded = COLOR_BLUE;
+
+        } else {
+
         }
     }
-
 }

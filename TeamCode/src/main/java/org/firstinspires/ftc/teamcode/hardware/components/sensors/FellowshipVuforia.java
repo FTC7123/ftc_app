@@ -20,7 +20,10 @@ public class FellowshipVuforia {
 
     VuforiaLocalizer vuforia;
 
+    LinearOpMode opMode;
+
     public int targetNumber = 0;
+
 
     public FellowshipVuforia(HardwareMap hardwareMap, AutonomousLegolessRobot opMode) {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -28,28 +31,41 @@ public class FellowshipVuforia {
 
         parameters.vuforiaLicenseKey = "AZrVU7T/////AAAAGVo9hsImhE6RojK+5tOA/zEuh6SPnDmpFUC14U9v2xbapUtN8fWjT8/cjuJjqybmMknEdiy5uP153iKIS5Bh8NmtymZrpVxH92vqmR7tvtEV/i2VcZBI6rwd181sRIdgphcr/vm4Ow5MoxqhSsBqXYXdElfMiINTfv2riOQsnnTqtMzDo3ZRczpK4rOtqHuSJ4zqrQcP5wJiJXGYGEMzfyryC1i3bMQuwZ7EFIVpCRFilct/s+N27b+gjSMwmvaIXGfU/Mmv4XCGuUZPLEi3pbXKix98RGNfgD4+L9m8qejf3bc7fqq4k3EDunBxAJp7oGq3mzuOTnaEu2L65QujzAlqTNPyTNDZynZshmcyLFlj";
 
-        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.FRONT;
         this.vuforia = ClassFactory.createVuforiaLocalizer(parameters);
 
-        VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
-        VuforiaTrackable relicTemplate = relicTrackables.get(0);
-        relicTemplate.setName("relicVuMarkTemplate");
+
     }
 
-    public void findTarget(){
-        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.UNKNOWN;
-        if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
-            /*
-             * Sets the targetNumber depending on which target is visible.
-            */
 
-            if (vuMark == RelicRecoveryVuMark.LEFT) {
-                targetNumber = 1;
-            } else if (vuMark == RelicRecoveryVuMark.CENTER) {
-                targetNumber = 2;
-            } else if (vuMark == RelicRecoveryVuMark.RIGHT) {
-                targetNumber = 3;
-            }
+    public void findTarget() {
+        VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
+
+        VuforiaTrackable relicTemplate = relicTrackables.get(0);
+        relicTemplate.setName("relicVuMarkTemplate");
+
+        relicTrackables.activate();
+
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+        if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+            opMode.telemetry.addData("Vumark", "%s visible", vuMark);
+            opMode.telemetry.update();
+        }
+
+        if (vuMark == RelicRecoveryVuMark.LEFT) {
+            targetNumber = 1;
+            opMode.telemetry.addData("Left ", targetNumber);
+            opMode.telemetry.update();
+        }
+        if (vuMark == RelicRecoveryVuMark.CENTER) {
+            targetNumber = 2;
+            opMode.telemetry.addData("Center ", targetNumber);
+            opMode.telemetry.update();
+        }
+        if (vuMark == RelicRecoveryVuMark.RIGHT) {
+            targetNumber = 3;
+            opMode.telemetry.addData("Right ", targetNumber);
+            opMode.telemetry.update();
         }
     }
 }

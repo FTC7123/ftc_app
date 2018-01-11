@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.autonomous;
 
-import android.util.Log;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -55,9 +53,6 @@ public class RedStoneOneJewelKeyGlyphPark extends LinearOpMode {
             telemetry.addData("no target visible ", robot.fellowshipVuforia.targetNumber);
             telemetry.update();
         }
-
         sleep(10000);
-
-
     }
 }

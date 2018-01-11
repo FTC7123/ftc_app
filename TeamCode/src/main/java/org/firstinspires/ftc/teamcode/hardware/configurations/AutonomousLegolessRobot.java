@@ -4,6 +4,8 @@ package org.firstinspires.ftc.teamcode.hardware.configurations;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.hardware.components.sensors.FellowshipUltrasonicArray;
 import org.firstinspires.ftc.teamcode.hardware.components.sensors.FellowshipVuforia;
 
