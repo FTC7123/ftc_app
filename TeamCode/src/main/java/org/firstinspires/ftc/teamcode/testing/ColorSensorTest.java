@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegolessRobot;
@@ -10,12 +11,16 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
  */
 
 @Autonomous(name = "Color Sensor Test")
+@Disabled
 public class ColorSensorTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         AutonomousLegolessRobot robot = new AutonomousLegolessRobot(hardwareMap, this);
 
         waitForStart();
+
+        robot.jewelArm.setJewelArmDown();
+        sleep(1000);
 
         robot.jewelArm.testColor();
 

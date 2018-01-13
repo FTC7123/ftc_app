@@ -18,8 +18,8 @@ public class JewelArm {
     public static final boolean POSITION_UP = false;
     public static final boolean POSITION_DOWN = true;
 
-    public static final double JEWEL_ARM_UP = 0.8;
-    public static final double JEWEL_ARM_DOWN = 0.7;
+    public static final double JEWEL_ARM_UP = 0.95;
+    public static final double JEWEL_ARM_DOWN = 0.25;
 
     public static final boolean COLOR_RED = true;
     public static final boolean COLOR_BLUE = false;
@@ -27,9 +27,6 @@ public class JewelArm {
     public boolean colorRecorded = COLOR_RED;
 
     LinearOpMode opmode;
-
-
-
 
     private Servo jewelArm;
 
@@ -40,13 +37,13 @@ public class JewelArm {
     public JewelArm (HardwareMap hardwareMap, LegolessRobot opMode){
         jewelArm = hardwareMap.servo.get("jewelArm");
 
-        //jewelArm.setPosition(JEWEL_ARM_UP);
+        jewelArm.setPosition(JEWEL_ARM_UP);
 
         colorSensor = hardwareMap.colorSensor.get("colorSensor");
         colorSensor.enableLed(true);
     }
 
-    public void setJewelArmUp(){
+    public void setJewelArmUp() {
         setJewelArm(POSITION_UP);
     }
 
@@ -66,13 +63,9 @@ public class JewelArm {
 
     public void testColor(){
         if (colorSensor.red() > colorSensor.blue()){
-
-
             colorRecorded = COLOR_RED;
 
         } else if (colorSensor.red() < colorSensor.blue()) {
-
-
             colorRecorded = COLOR_BLUE;
 
         } else {

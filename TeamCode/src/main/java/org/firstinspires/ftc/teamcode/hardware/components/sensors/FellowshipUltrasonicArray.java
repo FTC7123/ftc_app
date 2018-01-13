@@ -35,6 +35,6 @@ public class FellowshipUltrasonicArray {
     }
 
     public void getUltrasonicDifference() {
-        ultrasonicDifference = frontUltrasonicSensorValue - backUltrasonicSensorValue;
+        //ultrasonicDifference = frontUltrasonicSensorValue - backUltrasonicSensorValue;
     }
 }

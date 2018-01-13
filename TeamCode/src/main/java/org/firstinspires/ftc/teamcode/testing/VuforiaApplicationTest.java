@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.testing;
 import android.util.Log;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegolessRobot;
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
  */
 
 @Autonomous(name = "Vuforia Application Test")
+@Disabled
 public class VuforiaApplicationTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {

@@ -17,12 +17,9 @@ public class RedStoneOneJewelKeyGlyphPark extends LinearOpMode {
 
         waitForStart();
 
-        //Grab and raise glyph from in front of robot
-        //Could be made into a method
-        robot.harvester.closeHarvester();
-        robot.harvester.harvesterWinch.setPower(0.5);
-        sleep(500);
-        robot.harvester.harvesterWinch.setPower(0);
+        robot.pickUpGlyph();
+
+
 
         sleep(1000);
 

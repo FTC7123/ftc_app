@@ -18,7 +18,7 @@ public class Harvester {
     public static final boolean POSITION_OPEN = false;
     public static final boolean POSITION_CLOSED = true;
 
-    public static final double RIGHT_ARM_CLOSED = 0.7;
+    public static final double RIGHT_ARM_CLOSED = 0.675;
     public static final double RIGHT_ARM_OPENED = 1;
 
     public static final double LEFT_ARM_CLOSED = 0.3;

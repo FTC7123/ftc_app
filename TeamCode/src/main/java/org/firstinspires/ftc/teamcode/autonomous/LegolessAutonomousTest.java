@@ -18,16 +18,26 @@ public class LegolessAutonomousTest extends LinearOpMode {
 
         waitForStart();
 
-        int i = 0;
+        sleep(2000);
 
-        while (i < 4 && opModeIsActive()) {
-            robot.drive(1, 0.2);
-            sleep(1000);
-            robot.turnLeft(90, 0.2);
-            sleep(1000);
+        robot.jewelArm.setJewelArmDown();
+
+        sleep(1000);
+
+        robot.jewelArm.testColor();
+        if (robot.jewelArm.colorRecorded == robot.jewelArm.COLOR_RED) {
+            telemetry.addData("Red Visible ", robot.jewelArm.colorSensor.red());
+            telemetry.addData("     Blue Value: ", robot.jewelArm.colorSensor.blue());
+            telemetry.update();
+            sleep(3000);
+        } else if (robot.jewelArm.colorRecorded == robot.jewelArm.COLOR_BLUE) {
+            telemetry.addData("Blue Visible ", robot.jewelArm.colorSensor.blue());
+            telemetry.addData("     Red Value: ", robot.jewelArm.colorSensor.red());
+            telemetry.update();
+            sleep(3000);
+        } else {
         }
+        sleep(10000);
 
-        robot.setRightPower(0);
-        robot.setLeftPower(0);
     }
 }

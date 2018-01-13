@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -8,6 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by thomaslauer on 12/28/17.
  */
 @Autonomous(name = "WinchTest")
+@Disabled
 public class WinchServoTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.LegolessRobot;
  * Created by FTC 7123 on 12/31/2017.
  */
 @Autonomous(name = "Relic Arm Servo Test")
+@Disabled
 public class RelicArmServoTest extends LinearOpMode {
 
     @Override
