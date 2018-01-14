@@ -23,6 +23,7 @@ public class RelicArm {
     public Servo relicArmServo;
     public Servo relicClawServo;
 
+
     public static final double POSITION_STOW = 0;
     public static final double POSITION_UP = 0.04;
     public static final double POSITION_DOWN = 0.11;
