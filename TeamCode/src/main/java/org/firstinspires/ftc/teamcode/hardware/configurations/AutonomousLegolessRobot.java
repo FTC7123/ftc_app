@@ -18,7 +18,6 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     public FellowshipUltrasonicArray ultrasonicArray;
     public FellowshipVuforia fellowshipVuforia;
 
-
     public AutonomousLegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
         ultrasonicArray = new FellowshipUltrasonicArray(hardwareMap, this);
@@ -26,13 +25,13 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     }
 
     public void equalizeDiffernce() {
-        if (ultrasonicArray.ultrasonicDifference > 0) {
-            setRightPower(0.1);
-            setLeftPower(-0.1);
-        } else if (ultrasonicArray.ultrasonicDifference < 0) {
-            setRightPower(-0.1);
-            setLeftPower(0.1);
-        } else {
+        if (ultrasonicArray.ultrasonicDifference >= 2) {
+            setRightPower(0.2);
+            setLeftPower(-0.2);
+        } else if (ultrasonicArray.ultrasonicDifference <= -2) {
+            setRightPower(-0.2);
+            setLeftPower(0.2);
+        } else if (ultrasonicArray.ultrasonicDifference < 2 || ultrasonicArray.ultrasonicDifference > -2) {
             setRightPower(0);
             setLeftPower(0);
         }
