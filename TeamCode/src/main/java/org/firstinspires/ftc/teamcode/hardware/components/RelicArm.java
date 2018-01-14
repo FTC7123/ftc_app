@@ -19,8 +19,6 @@ public class RelicArm {
     public static final double RELIC_CLAW_OPEN = 0.85;
     public static final double RELIC_CLAW_CLOSED = 0.38;
 
-
-
     public DcMotor relicWinch;
     public Servo relicArmServo;
     public Servo relicClawServo;
