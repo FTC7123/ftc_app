@@ -18,7 +18,6 @@ public class UltrasonicArrayTest extends LinearOpMode {
 
         waitForStart();
 
-
         for (int i = 0; i < 500; i++) {
 
             robot.ultrasonicArray.getFrontUltrasonicDistance();
