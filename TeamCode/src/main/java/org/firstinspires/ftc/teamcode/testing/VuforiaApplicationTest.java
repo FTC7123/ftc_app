@@ -13,33 +13,31 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
  */
 
 @Autonomous(name = "Vuforia Application Test")
-@Disabled
+
 public class VuforiaApplicationTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
-
-        Log.d("*****ROBOT NOT ", "INITIALIZED*****");
-
         AutonomousLegolessRobot robot = new AutonomousLegolessRobot(hardwareMap, this);
-
-        Log.d("*****ROBOT ", "INITIALIZED*****");
 
         waitForStart();
 
-        Log.d("*****OPMODE ", "STARATED *****");
-        if (robot.fellowshipVuforia.targetNumber == 1) {
-            telemetry.addData("Target Visible: Left - ", robot.fellowshipVuforia.targetNumber);
-            telemetry.update();
-        }
-        if (robot.fellowshipVuforia.targetNumber == 2) {
-            telemetry.addData("Target Visible: Center - ", robot.fellowshipVuforia.targetNumber);
-            telemetry.update();
-        }
-        if (robot.fellowshipVuforia.targetNumber == 3) {
-            telemetry.addData("Target Visible: Right - ", robot.fellowshipVuforia.targetNumber);
-            telemetry.update();
-        }
+        robot.fellowshipVuforia.findTarget();
 
-        sleep(5000);
+        Log.d("Vision", "Finished");
+
+//        if (robot.fellowshipVuforia.targetNumber == 1) {
+//            telemetry.addData("target ", robot.fellowshipVuforia.targetNumber);
+//            telemetry.update();
+//        } else if (robot.fellowshipVuforia.targetNumber == 2) {
+//            telemetry.addData("target ", robot.fellowshipVuforia.targetNumber);
+//            telemetry.update();
+//        } else if (robot.fellowshipVuforia.targetNumber == 3) {
+//            telemetry.addData("target ", robot.fellowshipVuforia.targetNumber);
+//            telemetry.update();
+//        } else {
+//            telemetry.addData("no target visible ", robot.fellowshipVuforia.targetNumber);
+//            telemetry.update();
+//        }
+        sleep(10000);
     }
 }

@@ -19,7 +19,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     public AutonomousLegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
         ultrasonicArray = new FellowshipUltrasonicArray(hardwareMap, this);
-        fellowshipVuforia = new FellowshipVuforia(hardwareMap, this);
+        fellowshipVuforia = new FellowshipVuforia(hardwareMap, opMode);
     }
 
     public void equalizeDiffernce() {
@@ -47,6 +47,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
 
     public void pickUpGlyph() {
         harvester.closeHarvester();
+        opMode.sleep(100);
         harvester.harvesterWinch.setPower(0.5);
         opMode.sleep(1000);
         harvester.harvesterWinch.setPower(0);
