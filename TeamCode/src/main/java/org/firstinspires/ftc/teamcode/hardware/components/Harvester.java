@@ -25,20 +25,23 @@ public class Harvester {
     public static final double LEFT_ARM_OPENED = 0;
 
     public DcMotor harvesterWinch;
-    private Servo rightBottomServo;
-    private Servo rightTopServo;
 
-    private Servo leftBottomServo;
-    private Servo leftTopServo;
+    public Servo rightBottomServo;
+    public Servo rightTopServo;
+
+    public Servo leftBottomServo;
+    public Servo leftTopServo;
 
     public boolean rightServoPosition = POSITION_OPEN;
     public boolean leftServoPosition = POSITION_OPEN;
+
 
     public Harvester(HardwareMap hardwareMap, LegolessRobot opMode) {
         harvesterWinch = hardwareMap.dcMotor.get("harvesterWinch");
 
         rightBottomServo = hardwareMap.servo.get("rightBottomServo");
         rightTopServo = hardwareMap.servo.get("rightTopServo");
+
         leftBottomServo = hardwareMap.servo.get("leftBottomServo");
         leftTopServo = hardwareMap.servo.get("leftTopServo");
 

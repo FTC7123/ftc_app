@@ -77,11 +77,11 @@ public class LegolessTeleOp extends LinearOpMode {
                 robot.leftBackMotor.setPower(-0.25);
             } else {
                 //Drive Controls
-                robot.rightFrontMotor.setPower(rightStickAverage.getAverage() * driveFactor);
-                robot.rightBackMotor.setPower(rightStickAverage.getAverage() * driveFactor);
+                robot.rightFrontMotor.setPower(-rightStickAverage.getAverage() * driveFactor);
+                robot.rightBackMotor.setPower(-rightStickAverage.getAverage() * driveFactor);
 
-                robot.leftFrontMotor.setPower(leftStickAverage.getAverage() * driveFactor);
-                robot.leftBackMotor.setPower(leftStickAverage.getAverage() * driveFactor);
+                robot.leftFrontMotor.setPower(-leftStickAverage.getAverage() * driveFactor);
+                robot.leftBackMotor.setPower(-leftStickAverage.getAverage() * driveFactor);
             }
             //End Nudge/Drive Controls
 
@@ -91,10 +91,14 @@ public class LegolessTeleOp extends LinearOpMode {
 
             if (gamepad2.a){
                 robot.harvester.closeHarvester();
+                robot.harvester.rightTopServo.setPosition(0.675);
+                robot.harvester.leftTopServo.setPosition(0.3);
             }
 
             if (gamepad2.b){
                 robot.harvester.openHarvester();
+                robot.harvester.rightTopServo.setPosition(1);
+                robot.harvester.leftTopServo.setPosition(0);
             }
 
             if (gamepad2.right_bumper){

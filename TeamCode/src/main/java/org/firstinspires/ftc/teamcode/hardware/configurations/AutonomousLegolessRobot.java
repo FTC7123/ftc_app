@@ -24,11 +24,11 @@ public class AutonomousLegolessRobot extends LegolessRobot {
 
     public void equalizeDiffernce() {
         if (ultrasonicArray.ultrasonicDifference >= 2) {
-            setRightPower(0.2);
-            setLeftPower(-0.2);
+            setRightPower(0.5);
+            setLeftPower(-0.5);
         } else if (ultrasonicArray.ultrasonicDifference <= -2) {
-            setRightPower(-0.2);
-            setLeftPower(0.2);
+            setRightPower(-0.5);
+            setLeftPower(0.5);
         } else if (ultrasonicArray.ultrasonicDifference < 2 || ultrasonicArray.ultrasonicDifference > -2) {
             setRightPower(0);
             setLeftPower(0);
@@ -37,6 +37,10 @@ public class AutonomousLegolessRobot extends LegolessRobot {
 
     public void parkRedStoneOne() {
         drive(-0.72, 0.2);
+    }
+
+    public void parkRedStoneTwo() {
+
     }
 
     public void scoreGlyph(double meters, double speed) {

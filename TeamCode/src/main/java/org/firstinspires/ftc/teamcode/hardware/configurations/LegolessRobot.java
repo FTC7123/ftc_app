@@ -25,12 +25,8 @@ public class LegolessRobot extends SixWheelDriveTrain {
 
     public LegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
-        Log.d("TRACE", "Legoless ctor 1");
         harvester = new Harvester(hardwareMap, this);
-        Log.d("TRACE", "Legoless ctor 2");
         jewelArm = new JewelArm(hardwareMap, this);
-        Log.d("TRACE", "Legoless ctor 3");
         relicArm = new RelicArm(hardwareMap, this);
-        Log.d("TRACE", "Legoless ctor 4");
     }
 }

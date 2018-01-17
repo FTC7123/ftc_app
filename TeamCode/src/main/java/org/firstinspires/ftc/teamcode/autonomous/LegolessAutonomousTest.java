@@ -18,13 +18,25 @@ public class LegolessAutonomousTest extends LinearOpMode {
 
         waitForStart();
 
-        robot.jewelArm.setJewelArmUp();
+        robot.turnLeft(90, 0.2);
 
-        sleep(2000);
+        for (int i = 0; i < 5000; i++) {
 
-        robot.jewelArm.setJewelArmDown();
+            robot.ultrasonicArray.getFrontUltrasonicDistance();
+            robot.ultrasonicArray.getBackUltrasonicDistance();
+            robot.ultrasonicArray.getUltrasonicDifference();
 
-        sleep(2000);
+            telemetry.addData("Difference: ", robot.ultrasonicArray.ultrasonicDifference);
+            telemetry.addData("Right Power: ", robot.rightFrontMotor.getPower());
+            telemetry.addData("Left Power: ", robot.leftFrontMotor.getPower());
+            telemetry.update();
+
+            robot.equalizeDiffernce();
+
+            sleep(1);
+        }
+
+        robot.drive(-0.5, 0.2);
 
     }
 }

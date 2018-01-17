@@ -18,8 +18,24 @@ public class RedStoneTwoPark extends LinearOpMode {
 
         robot.pickUpGlyph();
 
-        robot.drive(-0.75, 0.2);
+        sleep(1000);
+
+        robot.drive(-0.70, 0.1);
+
+        sleep(1000);
 
         robot.turnLeft(90, 0.2);
+
+        sleep(1000);
+
+        robot.drive(-0.30, 0.2);
+
+        sleep(1000);
+
+        robot.turnRight(135, 0.2);
+
+        sleep(1000);
+
+        robot.setDownGlyph();
     }
 }
