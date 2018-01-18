@@ -27,48 +27,59 @@ public class SixWheelDriveTrain {
     public LinearOpMode opMode;
 
     public DcMotor rightFrontMotor;
+    //public DcMotor rightMidMotor;
     public DcMotor rightBackMotor;
 
     public DcMotor leftFrontMotor;
+    //public DcMotor leftMidMotor;
     public DcMotor leftBackMotor;
 
     private static final double wheelCircumference = 31.919; //measured in cm
 
     private static final double tickPerDegree = 5.8395; //for Neverest Planitary 20 motors with a 12 cm wheel, 120 cm turn circumference
 
-    /*
-    public FellowshipIMU imu;
-
-    public double currentAngle;
-    public double lastAngle;
-
-    public double targetDegrees;
-
-    public double firstAngle;
-
-    public static final double THRESH = 180;
-*/
 
     public SixWheelDriveTrain (HardwareMap hardwareMap, LinearOpMode opMode){
         this.opMode = opMode;
         rightFrontMotor = hardwareMap.dcMotor.get("rightFrontMotor");
+        //rightMidMotor = hardwareMap.dcMotor.get("rightMidMotor");
         rightBackMotor = hardwareMap.dcMotor.get("rightBackMotor");
 
         leftFrontMotor = hardwareMap.dcMotor.get("leftFrontMotor");
+        //leftMidMotor = hardwareMap.dcMotor.get("leftMidMotor);
         leftBackMotor = hardwareMap.dcMotor.get("leftBackMotor");
 
+        //Will be deleted due to code below
         leftFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-//        imu = new FellowshipIMU();
-//        imu.initialize(hardwareMap);
+
+//        rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+//        rightMidMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+//        rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+    }
+
+    public void setRightPower(double power) {
+        rightFrontMotor.setPower(power);
+        //rightMidMotor.setPower(power);
+        rightBackMotor.setPower(power);
+    }
+
+    public void setLeftPower(double power) {
+        leftFrontMotor.setPower(power);
+        //leftMidMotor.setPower(power);
+        leftBackMotor.setPower(power);
     }
 
     public void resetDriveEncoders() {
+        //Will be deleted because of code below
         rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //rightMidMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        //leftMidMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
     public void drive(double meters, double speed) {
@@ -118,7 +129,6 @@ public class SixWheelDriveTrain {
             opMode.telemetry.addData("L2", leftBackMotor.getCurrentPosition());
 
             opMode.telemetry.update();
-
         }
 
         rightFrontMotor.setPower(0);
@@ -128,15 +138,30 @@ public class SixWheelDriveTrain {
         leftBackMotor.setPower(0);
     }
 
-    public void setRightPower(double power) {
-        rightFrontMotor.setPower(power);
-        rightBackMotor.setPower(power);
-    }
+    /*
+    public void drive(double meters, double speed) {
+        meters = meters * 100 / wheelCircumference * 530;
 
-    public void setLeftPower(double power) {
-        leftFrontMotor.setPower(power);
-        leftBackMotor.setPower(power);
+        resetDriveEncoders();
+
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        rightMidMotor.setTargetPosition((int) meters);
+        leftMidMotor.setTargetPosition((int) meters);
+
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        setRightPower(speed);
+        setLeftPower(speed);
+
+        while (rightMidMotor.isBusy && leftMidMotor.isBusy && opMode.opModeIsActive()) {}
+
+        setRightPower(0);
+        setLeftPower(0);
     }
+    */
 
     public void turnRight(double degrees, double speed) {
         degrees = degrees * tickPerDegree;
@@ -169,6 +194,29 @@ public class SixWheelDriveTrain {
         setRightPower(0);
         setLeftPower(0);
     }
+
+    /*
+    public void turnRight(double degrees, double speed){
+        degrees = degrees * tickPerDegree;
+
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        rightMidMotor.setTargetPosition((int) -degrees);
+        leftMidMotor.setTargetPosition((int) degrees);
+
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        setRightPower(speed);
+        setLeftPower(speed);
+
+        while (rightMidMotor.isBusy && leftMidMotor.isBusy && opMode.opModeIsActive()) {}
+
+        setRightPower(0);
+        setLeftPower(0);
+    }
+    */
 
     public void turnLeft(double degrees, double speed) {
         degrees = degrees * tickPerDegree;
@@ -203,57 +251,27 @@ public class SixWheelDriveTrain {
     }
 
     /*
-    public void turnRight(double angle, double speed) {
-        rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    public void turnLeft(double degrees, double speed) {
+        degrees = degrees * tickPerDegree;
 
-        leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        resetDriveEncoders();
 
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightMidMotor.setTargetPosition((int) degrees);
+        leftMidMotor.setTargetPosition((int) -degrees);
 
-        setRightPower(-speed);
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        setRightPower(speed);
         setLeftPower(speed);
 
-        imu.resetStartPosition();
-
-        while (Math.abs(imu.getDeltaAngle()) < angle) {
-            imu.update();
-            opMode.sleep(1);
-        }
+        while (rightMidMotor.isBusy && leftMidMotor.isBusy && opMode.opModeIsActive()) {}
 
         setRightPower(0);
         setLeftPower(0);
     }
-
-    public void turnLeft(double angle, double speed) {
-        rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        setRightPower(speed);
-        setLeftPower(-speed);
-
-        imu.resetStartPosition();
-
-        while (Math.abs(imu.getDeltaAngle()) < angle) {
-            imu.update();
-            opMode.sleep(1);
-        }
-
-        setRightPower(0);
-        setLeftPower(0);
-    }*/
+    */
 }
