@@ -34,7 +34,7 @@ public class RedStoneOneJewelKeyGlyphPark extends LinearOpMode {
 //        } else {}
 
         robot.drive(-0.225, 0.1);
-
+/*
         robot.fellowshipVuforia.findTarget();
 
         if (robot.fellowshipVuforia.targetNumber == 1) {
@@ -51,5 +51,6 @@ public class RedStoneOneJewelKeyGlyphPark extends LinearOpMode {
             telemetry.update();
         }
         sleep(10000);
+        */
     }
 }

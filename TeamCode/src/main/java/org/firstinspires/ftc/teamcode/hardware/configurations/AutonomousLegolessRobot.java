@@ -1,9 +1,16 @@
 package org.firstinspires.ftc.teamcode.hardware.configurations;
 
 
+import android.util.Log;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.hardware.components.sensors.FellowshipUltrasonicArray;
 import org.firstinspires.ftc.teamcode.hardware.components.sensors.FellowshipVuforia;
 
@@ -19,7 +26,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     public AutonomousLegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
         ultrasonicArray = new FellowshipUltrasonicArray(hardwareMap, this);
-        fellowshipVuforia = new FellowshipVuforia(hardwareMap, opMode);
+        fellowshipVuforia = new FellowshipVuforia(hardwareMap, this);
     }
 
     public void equalizeDiffernce() {
@@ -83,5 +90,35 @@ public class AutonomousLegolessRobot extends LegolessRobot {
             turnRight(10, 0.1);
         } else {
         }
+    }
+
+    public void findTarget() {
+        VuforiaTrackables relicTrackables = this.fellowshipVuforia.vuforia.loadTrackablesFromAsset("RelicVuMark");
+
+        VuforiaTrackable relicTemplate = relicTrackables.get(0);
+        relicTemplate.setName("relicVuMarkTemplate");
+
+        relicTrackables.activate();
+        Log.d("INFO", "Trackables Activated");
+        opMode.sleep(3000);
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+        if (vuMark == RelicRecoveryVuMark.LEFT) {
+            fellowshipVuforia.targetNumber = 1;
+            opMode.telemetry.addData("Target Number ", fellowshipVuforia.targetNumber);
+            opMode.telemetry.update();
+        } else if (vuMark == RelicRecoveryVuMark.CENTER) {
+            fellowshipVuforia.targetNumber = 2;
+            opMode.telemetry.addData("Target Number ", fellowshipVuforia.targetNumber);
+            opMode.telemetry.update();
+        } else if (vuMark == RelicRecoveryVuMark.RIGHT) {
+            fellowshipVuforia.targetNumber = 3;
+            opMode.telemetry.addData("Target Number ", fellowshipVuforia.targetNumber);
+            opMode.telemetry.update();
+        } else {
+            fellowshipVuforia.targetNumber = 0;
+            opMode.telemetry.addData("Target Number ", fellowshipVuforia.targetNumber);
+            opMode.telemetry.update();
+        }
+
     }
 }

@@ -42,7 +42,7 @@ public class VATestTwo extends LinearOpMode {
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
 
         waitForStart();
-
+/*
         while (opModeIsActive()) {
             if (vuMark == RelicRecoveryVuMark.LEFT) {
                 robot.fellowshipVuforia.targetNumber = 1;
@@ -66,6 +66,9 @@ public class VATestTwo extends LinearOpMode {
                 robot.fellowshipVuforia.targetNumber = 0;
                 Log.d("Vision", "Unknown");
             }
+
         }
+    */
     }
+
 }

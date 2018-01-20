@@ -21,7 +21,7 @@ public class VuforiaApplicationTest extends LinearOpMode {
 
         waitForStart();
 
-        robot.fellowshipVuforia.findTarget();
+        //robot.fellowshipVuforia.findTarget();
 
         Log.d("Vision", "Finished");
 
