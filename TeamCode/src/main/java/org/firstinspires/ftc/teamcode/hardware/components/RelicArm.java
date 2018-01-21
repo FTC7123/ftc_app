@@ -23,12 +23,14 @@ public class RelicArm {
     public Servo relicArmServo;
     public Servo relicClawServo;
 
+    public double currentPosition = 0;
 
     public static final double POSITION_STOW = 0;
     public static final double POSITION_UP = 0.04;
     public static final double POSITION_DOWN = 0.11;
 
     public boolean relicClawPosition = POSITION_OPEN;
+
 
     public RelicArm(HardwareMap hardwareMap, LegolessRobot opMode){
         relicWinch = hardwareMap.dcMotor.get("relicWinch");
@@ -50,5 +52,16 @@ public class RelicArm {
         } else {
             relicClawServo.setPosition(RELIC_CLAW_OPEN);
         }
+    }
+
+
+    public void moveUp() {
+        currentPosition = relicArmServo.getPosition();
+        relicArmServo.setPosition(currentPosition + 0.05);
+    }
+
+    public void moveDown() {
+        currentPosition = relicArmServo.getPosition();
+        relicArmServo.setPosition(currentPosition - 0.05);
     }
 }

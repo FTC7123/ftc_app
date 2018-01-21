@@ -18,7 +18,6 @@ import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveTrain;
  */
 
 public class LegolessRobot extends SixWheelDriveTrain {
-
     public Harvester harvester;
     public JewelArm jewelArm;
     public RelicArm relicArm;

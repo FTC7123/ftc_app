@@ -56,40 +56,29 @@ public class LegolessTeleOp extends LinearOpMode {
 
             //Nudge controls
             if (gamepad1.dpad_up){
-                robot.rightFrontMotor.setPower(-0.25);
-                robot.rightBackMotor.setPower(-0.25);
-                robot.leftFrontMotor.setPower(-0.25);
-                robot.leftBackMotor.setPower(-0.25);
+                robot.setRightPower(0.25);
+                robot.setLeftPower(0.25);
             } else if (gamepad1.dpad_down){
-                robot.rightFrontMotor.setPower(0.25);
-                robot.rightBackMotor.setPower(0.25);
-                robot.leftFrontMotor.setPower(0.25);
-                robot.leftBackMotor.setPower(0.25);
+                robot.setRightPower(-0.25);
+                robot.setLeftPower(-0.25);
             } else if (gamepad1.dpad_left){
-                robot.rightFrontMotor.setPower(-0.25);
-                robot.rightBackMotor.setPower(-0.25);
-                robot.leftFrontMotor.setPower(0.25);
-                robot.leftBackMotor.setPower(0.25);
+                robot.setRightPower(0.25);
+                robot.setLeftPower(-0.25);
             } else if (gamepad1.dpad_right){
-                robot.rightFrontMotor.setPower(0.25);
-                robot.rightBackMotor.setPower(0.25);
-                robot.leftFrontMotor.setPower(-0.25);
-                robot.leftBackMotor.setPower(-0.25);
+                robot.setRightPower(-0.25);
+                robot.setLeftPower(-0.25);
             } else {
                 //Drive Controls
-                robot.rightFrontMotor.setPower(-rightStickAverage.getAverage() * driveFactor);
-                robot.rightBackMotor.setPower(-rightStickAverage.getAverage() * driveFactor);
-
-                robot.leftFrontMotor.setPower(-leftStickAverage.getAverage() * driveFactor);
-                robot.leftBackMotor.setPower(-leftStickAverage.getAverage() * driveFactor);
+                robot.setRightPower(-rightStickAverage.getAverage() * driveFactor);
+                robot.setLeftPower(-leftStickAverage.getAverage() * driveFactor);
             }
             //End Nudge/Drive Controls
 
 
             //Harvester Controls
-            robot.harvester.harvesterWinch.setPower(-gamepad2.right_stick_y);
+            robot.harvester.harvesterWinch.setPower(gamepad2.left_stick_y);
 
-            if (gamepad2.a){
+            if (gamepad2.x) {
                 robot.harvester.closeHarvester();
                 robot.harvester.rightTopServo.setPosition(0.675);
                 robot.harvester.leftTopServo.setPosition(0.3);
@@ -118,33 +107,26 @@ public class LegolessTeleOp extends LinearOpMode {
             } else {
                 leftButtonDebouce = false;
             }
-
-
             //End Harvester Controls
 
-            //Jewel Servo Controls
-//
-//            if (gamepad1.left_bumper){
-//                    if (!jewelServoDebounce){
-//                        jewelServoPosition = !jewelServoPosition;
-//                        jewelServoDebounce = true;
-//                    }
-//                } else {
-//                    jewelServoDebounce = false;
-//                }
-//
-//                if (jewelServoPosition = POSITION_UP){
-//                    jewelServo.setPosition(0);
-//                }
-//
-//                if (jewelServoPosition = POSITION_DOWN){
-//                    jewelServo.setPosition(1);
-//            }
-//            //End Jewel Servo Controls
-
             //Relic Controls
-            robot.relicArm.relicWinch.setPower(-gamepad2.left_stick_y);
+            if (gamepad1.left_trigger < 0.01 && gamepad1.right_trigger == 0) {
+                robot.relicArm.relicWinch.setPower(gamepad1.right_trigger);
+            } else if (gamepad1.right_trigger > -0.01 && gamepad1.left_trigger == 0) {
+                robot.relicArm.relicWinch.setPower(-gamepad1.left_trigger);
+            } else {
+                robot.relicArm.relicWinch.setPower(0);
+            }
 
+            if (gamepad2.dpad_up) {
+                robot.relicArm.moveUp();
+            }
+            if (gamepad2.dpad_down) {
+                robot.relicArm.moveDown();
+            }
+
+
+            /*
             if (gamepad2.dpad_right) {
                 robot.relicArm.setRelicArm(RelicArm.POSITION_STOW);
             }
@@ -156,7 +138,7 @@ public class LegolessTeleOp extends LinearOpMode {
             if (gamepad2.dpad_left) {
                 robot.relicArm.setRelicArm(RelicArm.POSITION_DOWN);
             }
-
+*/
             if (gamepad2.x) {
                 robot.relicArm.setRelicClaw(RelicArm.POSITION_CLOSED);
             }

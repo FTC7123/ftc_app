@@ -28,5 +28,7 @@ public class RedStoneOneJewelGlyphPark extends LinearOpMode {
         robot.drive(-0.06, 0.2);
 
         robot.turnRight(10, 0.2);
+
+        robot.drive(-0.10, 0.2);
     }
 }

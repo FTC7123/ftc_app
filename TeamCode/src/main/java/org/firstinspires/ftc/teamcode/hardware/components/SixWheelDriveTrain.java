@@ -138,40 +138,51 @@ public class SixWheelDriveTrain {
     public void drive(double meters, double speed) {
         meters = meters * 100 / wheelCircumference * 530;
 
-        resetDriveEncoders();
+        rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightMidMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftMidMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        rightMidMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftMidMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        rightFrontMotor.setTargetPosition((int) meters);
         rightMidMotor.setTargetPosition((int) meters);
+        rightBackMotor.setTargetPosition((int) meters);
+        leftFrontMotor.setTargetPosition((int) meters);
         leftMidMotor.setTargetPosition((int) meters);
+        leftBackMotor.setTargetPosition((int) meters);
 
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         rightFrontMotor.setPower(speed);
-        rightMidMotor.setPower(speed);
+        rightMidMotor.setPower(speed * 2);
         rightBackMotor.setPower(speed);
         leftFrontMotor.setPower(speed);
-        leftMidMotor.setPower(speed);
+        leftMidMotor.setPower(speed * 2);
         leftBackMotor.setPower(speed);
 
         while (rightMidMotor.isBusy() && leftMidMotor.isBusy() && opMode.opModeIsActive()) {
-            opMode.telemetry.addData("position ", rightFrontMotor.getCurrentPosition());
-            opMode.telemetry.addData("position ", rightMidMotor.getCurrentPosition());
-            opMode.telemetry.addData("position ", rightBackMotor.getCurrentPosition());
-            opMode.telemetry.addData("position ", leftFrontMotor.getCurrentPosition());
-            opMode.telemetry.addData("position ", leftMidMotor.getCurrentPosition());
-            opMode.telemetry.addData("position ", leftBackMotor.getCurrentPosition());
+            opMode.telemetry.addData("position ", rightFrontMotor.getPower());
+            opMode.telemetry.addData("position ", rightMidMotor.getPower());
+            opMode.telemetry.addData("position ", rightBackMotor.getPower());
+            opMode.telemetry.addData("position ", leftFrontMotor.getPower());
+            opMode.telemetry.addData("position ", leftMidMotor.getPower());
+            opMode.telemetry.addData("position ", leftBackMotor.getPower());
             opMode.telemetry.update();
-
         }
 
         rightFrontMotor.setPower(0);
@@ -221,17 +232,35 @@ public class SixWheelDriveTrain {
     public void turnRight(double degrees, double speed){
         degrees = degrees * tickPerDegree;
 
+        resetDriveEncoders();
+
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        rightFrontMotor.setTargetPosition((int) -degrees);
         rightMidMotor.setTargetPosition((int) -degrees);
+        rightBackMotor.setTargetPosition((int) -degrees);
+        leftFrontMotor.setTargetPosition((int) degrees);
         leftMidMotor.setTargetPosition((int) degrees);
+        leftBackMotor.setTargetPosition((int) degrees);
 
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        setRightPower(speed);
-        setLeftPower(speed);
+        rightFrontMotor.setPower(speed);
+        rightMidMotor.setPower(speed * 2);
+        rightBackMotor.setPower(speed);
+        leftFrontMotor.setPower(speed);
+        leftMidMotor.setPower(speed * 2);
+        leftBackMotor.setPower(speed);
 
         while (rightMidMotor.isBusy() && leftMidMotor.isBusy() && opMode.opModeIsActive()) {
         }
@@ -281,17 +310,33 @@ public class SixWheelDriveTrain {
 
         resetDriveEncoders();
 
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMidMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        rightFrontMotor.setTargetPosition((int) degrees);
         rightMidMotor.setTargetPosition((int) degrees);
+        rightBackMotor.setTargetPosition((int) degrees);
+        leftFrontMotor.setTargetPosition((int) -degrees);
         leftMidMotor.setTargetPosition((int) -degrees);
+        leftBackMotor.setTargetPosition((int) -degrees);
 
+        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftMidMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        setRightPower(speed);
-        setLeftPower(speed);
+        rightFrontMotor.setPower(speed);
+        rightMidMotor.setPower(speed * 2);
+        rightBackMotor.setPower(speed);
+        leftFrontMotor.setPower(speed);
+        leftMidMotor.setPower(speed * 2);
+        leftBackMotor.setPower(speed);
 
         while (rightMidMotor.isBusy() && leftMidMotor.isBusy() && opMode.opModeIsActive()) {
         }

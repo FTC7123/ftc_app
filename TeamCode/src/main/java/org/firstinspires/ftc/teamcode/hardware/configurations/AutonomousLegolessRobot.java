@@ -20,8 +20,10 @@ import org.firstinspires.ftc.teamcode.hardware.components.sensors.FellowshipVufo
 
 public class AutonomousLegolessRobot extends LegolessRobot {
 
+
     public FellowshipUltrasonicArray ultrasonicArray;
     public FellowshipVuforia fellowshipVuforia;
+
 
     public AutonomousLegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);
@@ -43,11 +45,11 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     }
 
     public void parkRedStoneOne() {
-        drive(-0.72, 0.2);
+        drive(-0.90, 0.2);
     }
 
-    public void parkRedStoneTwo() {
-
+    public void parkBlueStoneOne() {
+        drive(0.70, 0.2);
     }
 
     public void scoreGlyph(double meters, double speed) {
@@ -80,6 +82,11 @@ public class AutonomousLegolessRobot extends LegolessRobot {
 
         jewelArm.testColor();
 
+        opMode.telemetry.addData("Red Value", jewelArm.colorSensor.red());
+        opMode.telemetry.addData("Blue Value", jewelArm.colorSensor.blue());
+        opMode.telemetry.update();
+
+
         if (jewelArm.colorRecorded == jewelArm.COLOR_RED) {
             turnRight(10, 0.1);
             jewelArm.setJewelArmUp();
@@ -88,6 +95,30 @@ public class AutonomousLegolessRobot extends LegolessRobot {
             turnLeft(10, 0.1);
             jewelArm.setJewelArmUp();
             turnRight(10, 0.1);
+        } else {
+        }
+    }
+
+    public void scoreJewelBlue() {
+        jewelArm.setJewelArmDown();
+
+        opMode.sleep(500);
+
+        jewelArm.testColor();
+
+        opMode.telemetry.addData("Red Value", jewelArm.colorSensor.red());
+        opMode.telemetry.addData("Blue Value", jewelArm.colorSensor.blue());
+        opMode.telemetry.update();
+
+
+        if (jewelArm.colorRecorded == jewelArm.COLOR_RED) {
+            turnLeft(10, 0.1);
+            jewelArm.setJewelArmUp();
+            turnRight(10, 0.1);
+        } else if (jewelArm.colorRecorded == jewelArm.COLOR_BLUE) {
+            turnRight(10, 0.1);
+            jewelArm.setJewelArmUp();
+            turnLeft(10, 0.1);
         } else {
         }
     }
