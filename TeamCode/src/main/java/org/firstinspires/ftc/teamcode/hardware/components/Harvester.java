@@ -18,11 +18,11 @@ public class Harvester {
     public static final boolean POSITION_OPEN = false;
     public static final boolean POSITION_CLOSED = true;
 
-    public static final double RIGHT_ARM_CLOSED = 0.675;
-    public static final double RIGHT_ARM_OPENED = 1;
+    public static final double RIGHT_ARM_CLOSED = 0.65;
+    public static final double RIGHT_ARM_OPENED = 0.95;
 
-    public static final double LEFT_ARM_CLOSED = 0.3;
-    public static final double LEFT_ARM_OPENED = 0;
+    public static final double LEFT_ARM_CLOSED = 0.35;
+    public static final double LEFT_ARM_OPENED = 0.05;
 
     public DcMotor harvesterWinch;
 
@@ -73,7 +73,7 @@ public class Harvester {
             rightTopServo.setPosition(RIGHT_ARM_CLOSED);
         } else {
             rightBottomServo.setPosition(RIGHT_ARM_OPENED);
-            rightTopServo.setPosition(RIGHT_ARM_CLOSED);
+            rightTopServo.setPosition(RIGHT_ARM_OPENED);
         }
     }
 
@@ -84,7 +84,7 @@ public class Harvester {
             leftTopServo.setPosition(LEFT_ARM_CLOSED);
         } else {
             leftBottomServo.setPosition(LEFT_ARM_OPENED);
-            leftTopServo.setPosition(LEFT_ARM_CLOSED);
+            leftTopServo.setPosition(LEFT_ARM_OPENED);
         }
     }
 }

@@ -60,7 +60,7 @@ public class LegolessTeleOp extends LinearOpMode {
                 robot.setLeftPower(0.25);
             } else if (gamepad1.dpad_down){
                 robot.setRightPower(-0.25);
-                robot.setLeftPower(-0.25);
+                robot.setLeftPower(0.25);
             } else if (gamepad1.dpad_left){
                 robot.setRightPower(0.25);
                 robot.setLeftPower(-0.25);
@@ -80,14 +80,10 @@ public class LegolessTeleOp extends LinearOpMode {
 
             if (gamepad2.x) {
                 robot.harvester.closeHarvester();
-                robot.harvester.rightTopServo.setPosition(0.675);
-                robot.harvester.leftTopServo.setPosition(0.3);
             }
 
             if (gamepad2.b){
                 robot.harvester.openHarvester();
-                robot.harvester.rightTopServo.setPosition(1);
-                robot.harvester.leftTopServo.setPosition(0);
             }
 
             if (gamepad2.right_bumper){
@@ -110,12 +106,10 @@ public class LegolessTeleOp extends LinearOpMode {
             //End Harvester Controls
 
             //Relic Controls
-            if (gamepad1.left_trigger < 0.01 && gamepad1.right_trigger == 0) {
+            if (gamepad1.right_trigger > 0) {
                 robot.relicArm.relicWinch.setPower(gamepad1.right_trigger);
-            } else if (gamepad1.right_trigger > -0.01 && gamepad1.left_trigger == 0) {
-                robot.relicArm.relicWinch.setPower(-gamepad1.left_trigger);
             } else {
-                robot.relicArm.relicWinch.setPower(0);
+                robot.relicArm.relicWinch.setPower(-gamepad1.left_trigger);
             }
 
             if (gamepad2.dpad_up) {
@@ -126,7 +120,6 @@ public class LegolessTeleOp extends LinearOpMode {
             }
 
 
-            /*
             if (gamepad2.dpad_right) {
                 robot.relicArm.setRelicArm(RelicArm.POSITION_STOW);
             }
@@ -138,7 +131,7 @@ public class LegolessTeleOp extends LinearOpMode {
             if (gamepad2.dpad_left) {
                 robot.relicArm.setRelicArm(RelicArm.POSITION_DOWN);
             }
-*/
+
             if (gamepad2.x) {
                 robot.relicArm.setRelicClaw(RelicArm.POSITION_CLOSED);
             }
