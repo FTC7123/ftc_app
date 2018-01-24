@@ -49,7 +49,13 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     }
 
     public void parkBlueStoneOne() {
-        drive(0.70, 0.2);
+        drive(0.90, 0.15);
+    }
+
+    public void parkBlueStoneTwo() {
+        drive(0.70, 0.15);
+        turnRight(90, 0.2);
+        drive(0.30, 0.2);
     }
 
     public void scoreGlyph(double meters, double speed) {

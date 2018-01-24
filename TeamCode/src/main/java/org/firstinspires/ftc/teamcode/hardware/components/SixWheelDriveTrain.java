@@ -191,6 +191,8 @@ public class SixWheelDriveTrain {
         leftFrontMotor.setPower(0);
         leftMidMotor.setPower(0);
         leftBackMotor.setPower(0);
+
+        opMode.sleep(100);
     }
 
 
