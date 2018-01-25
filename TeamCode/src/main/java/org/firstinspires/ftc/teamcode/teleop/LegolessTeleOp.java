@@ -108,8 +108,15 @@ public class LegolessTeleOp extends LinearOpMode {
             //Relic Controls
             if (gamepad1.right_trigger > 0) {
                 robot.relicArm.relicWinch.setPower(gamepad1.right_trigger);
+                telemetry.addData("Right Activated, slide moving out", gamepad1.right_trigger);
+                telemetry.update();
+            } else if (gamepad1.left_trigger > 0) {
+                robot.relicArm.relicWinch.setPower(gamepad1.left_trigger);
+                telemetry.addData("Left Activated, slide moving out", gamepad1.left_trigger);
+                telemetry.update();
             } else {
-                robot.relicArm.relicWinch.setPower(-gamepad1.left_trigger);
+                telemetry.addData("Nothing Activated", null);
+                telemetry.update();
             }
 
             if (gamepad2.dpad_up) {
