@@ -19,26 +19,25 @@ public class RelicArm {
     public static final double RELIC_CLAW_OPEN = 0.85;
     public static final double RELIC_CLAW_CLOSED = 0.38;
 
+    private double armAccuracy = 0.02;
+
     public DcMotor relicWinch;
     public Servo relicArmServo;
     public Servo relicClawServo;
 
-    public double currentPosition = 0;
+    private double currentPosition = 0;
 
-    public static final double POSITION_STOW = 0;
-    public static final double POSITION_UP = 0.04;
     public static final double POSITION_DOWN = 0.11;
 
     public boolean relicClawPosition = POSITION_OPEN;
-
 
     public RelicArm(HardwareMap hardwareMap, LegolessRobot opMode){
         relicWinch = hardwareMap.dcMotor.get("relicWinch");
         relicArmServo = hardwareMap.servo.get("relicArmServo");
         relicClawServo = hardwareMap.servo.get("relicClawServo");
 
-        setRelicArm(POSITION_STOW);
-        setRelicClaw(POSITION_OPEN);
+        setRelicArm(POSITION_DOWN);
+        setRelicClaw(POSITION_CLOSED);
     }
 
     public void setRelicArm(double position) {
@@ -54,14 +53,25 @@ public class RelicArm {
         }
     }
 
+    public void moveDown() {
+        currentPosition = relicArmServo.getPosition();
+        //Ensures the servo isn't set to a position greater than 1
+        if (currentPosition <= (1 - armAccuracy)) {
+            //newServoPosition = currentPosition + armAccuracy;
+            relicArmServo.setPosition(currentPosition + armAccuracy);
+        } else {
+            relicArmServo.setPosition(1);
+        }
+    }
 
     public void moveUp() {
         currentPosition = relicArmServo.getPosition();
-        relicArmServo.setPosition(currentPosition + 0.05);
-    }
-
-    public void moveDown() {
-        currentPosition = relicArmServo.getPosition();
-        relicArmServo.setPosition(currentPosition - 0.05);
+        //Ensures the servo isn't set to a position less than 0
+        if (currentPosition >= (0 + armAccuracy)) {
+            //newServoPosition = currentPosition - armAccuracy;
+            relicArmServo.setPosition(currentPosition - armAccuracy);
+        } else {
+            relicArmServo.setPosition(0);
+        }
     }
 }

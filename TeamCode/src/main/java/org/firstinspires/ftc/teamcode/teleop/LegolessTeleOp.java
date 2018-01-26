@@ -111,42 +111,33 @@ public class LegolessTeleOp extends LinearOpMode {
                 telemetry.addData("Right Activated, slide moving out", gamepad1.right_trigger);
                 telemetry.update();
             } else if (gamepad1.left_trigger > 0) {
-                robot.relicArm.relicWinch.setPower(gamepad1.left_trigger);
+                robot.relicArm.relicWinch.setPower(-gamepad1.left_trigger);
                 telemetry.addData("Left Activated, slide moving out", gamepad1.left_trigger);
                 telemetry.update();
             } else {
+                robot.relicArm.relicWinch.setPower(0);
                 telemetry.addData("Nothing Activated", null);
                 telemetry.update();
             }
 
             if (gamepad2.dpad_up) {
                 robot.relicArm.moveUp();
+                telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
+                telemetry.update();
             }
             if (gamepad2.dpad_down) {
                 robot.relicArm.moveDown();
+                telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
+                telemetry.update();
             }
-
 
             if (gamepad2.dpad_right) {
-                robot.relicArm.setRelicArm(RelicArm.POSITION_STOW);
-            }
-
-            if (gamepad2.dpad_up) {
-                robot.relicArm.setRelicArm(RelicArm.POSITION_UP);
-            }
-
-            if (gamepad2.dpad_left) {
-                robot.relicArm.setRelicArm(RelicArm.POSITION_DOWN);
-            }
-
-            if (gamepad2.x) {
                 robot.relicArm.setRelicClaw(RelicArm.POSITION_CLOSED);
             }
 
-            if (gamepad2.y) {
+            if (gamepad2.dpad_left) {
                 robot.relicArm.setRelicClaw(RelicArm.POSITION_OPEN);
             }
-
             //End Relic Controls
         }
     }

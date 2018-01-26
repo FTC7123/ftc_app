@@ -20,7 +20,7 @@ public class BlueStoneOneJewelGlyphPark extends LinearOpMode {
         robot.scoreJewelBlue();
         robot.parkBlueStoneOne();
         robot.turnLeft(135, 0.15);
-        robot.scoreGlyph(0.17, 0.2);
-        robot.drive(-0.10, 0.2);
+        //robot.scoreGlyph(0.17, 0.2);
+        //robot.drive(-0.10, 0.2);
     }
 }
