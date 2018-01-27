@@ -20,6 +20,8 @@ public class LegolessTeleOp extends LinearOpMode {
         LegolessRobot robot = new LegolessRobot(hardwareMap, this);
 
         double driveFactor = 0.7;
+        double currentPosition = 0;
+
 
         MovingAverage rightStickAverage = new MovingAverage(3);
         MovingAverage leftStickAverage = new MovingAverage(3);
@@ -108,27 +110,27 @@ public class LegolessTeleOp extends LinearOpMode {
             //Relic Controls
             if (gamepad1.right_trigger > 0) {
                 robot.relicArm.relicWinch.setPower(gamepad1.right_trigger);
-                telemetry.addData("Right Activated, slide moving out", gamepad1.right_trigger);
-                telemetry.update();
             } else if (gamepad1.left_trigger > 0) {
                 robot.relicArm.relicWinch.setPower(-gamepad1.left_trigger);
-                telemetry.addData("Left Activated, slide moving out", gamepad1.left_trigger);
-                telemetry.update();
             } else {
                 robot.relicArm.relicWinch.setPower(0);
-                telemetry.addData("Nothing Activated", null);
-                telemetry.update();
             }
 
             if (gamepad2.dpad_up) {
-                robot.relicArm.moveUp();
+                sleep(100);
+                currentPosition = robot.relicArm.relicArmServo.getPosition();
+                robot.relicArm.relicArmServo.setPosition(robot.relicArm.relicArmServo.getPosition() - 0.02);
+
                 telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
                 telemetry.update();
-            }
-            if (gamepad2.dpad_down) {
-                robot.relicArm.moveDown();
+            } else if (gamepad2.dpad_down) {
+                currentPosition = robot.relicArm.relicArmServo.getPosition();
+                sleep(100);
+                robot.relicArm.relicArmServo.setPosition(robot.relicArm.relicArmServo.getPosition() + 0.02);
+
                 telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
                 telemetry.update();
+            } else {
             }
 
             if (gamepad2.dpad_right) {
@@ -139,6 +141,9 @@ public class LegolessTeleOp extends LinearOpMode {
                 robot.relicArm.setRelicClaw(RelicArm.POSITION_OPEN);
             }
             //End Relic Controls
+
+            telemetry.addData("Position", robot.relicArm.relicClawServo.getPosition());
+            telemetry.update();
         }
     }
 }

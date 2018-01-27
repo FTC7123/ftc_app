@@ -16,14 +16,15 @@ public class RelicArm {
     public static final boolean POSITION_OPEN = false;
     public static final boolean POSITION_CLOSED = true;
 
-    public static final double RELIC_CLAW_OPEN = 0.85;
-    public static final double RELIC_CLAW_CLOSED = 0.38;
+    public static final double RELIC_CLAW_OPEN = 0.2;
+    public static final double RELIC_CLAW_CLOSED = 0.85;
 
     private double armAccuracy = 0.02;
 
     public DcMotor relicWinch;
     public Servo relicArmServo;
     public Servo relicClawServo;
+
 
     private double currentPosition = 0;
 
@@ -56,22 +57,15 @@ public class RelicArm {
     public void moveDown() {
         currentPosition = relicArmServo.getPosition();
         //Ensures the servo isn't set to a position greater than 1
-        if (currentPosition <= (1 - armAccuracy)) {
-            //newServoPosition = currentPosition + armAccuracy;
-            relicArmServo.setPosition(currentPosition + armAccuracy);
-        } else {
-            relicArmServo.setPosition(1);
-        }
+        // newServoPosition = currentPosition + armAccuracy;
+        relicArmServo.setPosition(currentPosition + 0.02);
     }
 
     public void moveUp() {
         currentPosition = relicArmServo.getPosition();
         //Ensures the servo isn't set to a position less than 0
-        if (currentPosition >= (0 + armAccuracy)) {
-            //newServoPosition = currentPosition - armAccuracy;
-            relicArmServo.setPosition(currentPosition - armAccuracy);
-        } else {
-            relicArmServo.setPosition(0);
-        }
+        //newServoPosition = currentPosition - armAccuracy;
+        relicArmServo.setPosition(currentPosition - 0.02);
+
     }
 }
