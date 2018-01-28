@@ -53,7 +53,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     }
 
     public void parkBlueStoneTwo() {
-        drive(0.70, 0.15);
+        drive(0.75, 0.2);
         turnRight(90, 0.2);
         drive(0.30, 0.2);
     }
@@ -68,7 +68,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
         harvester.closeHarvester();
         opMode.sleep(100);
         harvester.harvesterWinch.setPower(0.5);
-        opMode.sleep(1000);
+        opMode.sleep(750);
         harvester.harvesterWinch.setPower(0);
         opMode.sleep(250);
     }

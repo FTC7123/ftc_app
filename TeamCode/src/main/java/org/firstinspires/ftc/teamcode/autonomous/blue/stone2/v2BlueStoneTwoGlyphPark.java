@@ -6,10 +6,10 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegolessRobot;
 
 /**
- * Created by FTC 7123 on 1/23/2018.
+ * Created by FTC 7123 on 1/27/2018.
  */
-@Autonomous(name = "Blue Stone Two - Jewel, Basic Glyph, Park", group = "Blue Stone Two")
-public class BlueStoneTwoJewelGlyphPark extends LinearOpMode {
+@Autonomous(name = "v2 Blue Stone Two - Jewel, Basic Glyph, Park", group = "Blue Stone Two")
+public class v2BlueStoneTwoGlyphPark extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         AutonomousLegolessRobot robot = new AutonomousLegolessRobot(hardwareMap, this);
@@ -18,12 +18,8 @@ public class BlueStoneTwoJewelGlyphPark extends LinearOpMode {
 
         robot.pickUpGlyph();
         robot.scoreJewelBlue();
-        robot.parkBlueStoneTwo();
-
-        sleep(1000);
-
-        robot.drive(0.22, 0.2);
-        robot.turnLeft(120, 0.2);
-        robot.scoreGlyph(0.08, 0.2);
+        robot.drive(0.77, 0.15);
+        robot.turnRight(45, 0.2);
+        robot.scoreGlyph(0.28, 0.15);
     }
 }
