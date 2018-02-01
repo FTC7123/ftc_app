@@ -68,7 +68,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
         harvester.closeHarvester();
         opMode.sleep(100);
         harvester.harvesterWinch.setPower(0.5);
-        opMode.sleep(750);
+        opMode.sleep(1000);
         harvester.harvesterWinch.setPower(0);
         opMode.sleep(250);
     }

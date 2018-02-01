@@ -20,8 +20,8 @@ public class LegolessTeleOp extends LinearOpMode {
         LegolessRobot robot = new LegolessRobot(hardwareMap, this);
 
         double driveFactor = 0.7;
-        double currentPosition = 0;
-
+        double relicArmCurrentPosition = 0;
+        double relicClawCurrentPosition = 0;
 
         MovingAverage rightStickAverage = new MovingAverage(3);
         MovingAverage leftStickAverage = new MovingAverage(3);
@@ -62,13 +62,13 @@ public class LegolessTeleOp extends LinearOpMode {
                 robot.setLeftPower(0.25);
             } else if (gamepad1.dpad_down){
                 robot.setRightPower(-0.25);
-                robot.setLeftPower(0.25);
+                robot.setLeftPower(-0.25);
             } else if (gamepad1.dpad_left){
                 robot.setRightPower(0.25);
                 robot.setLeftPower(-0.25);
             } else if (gamepad1.dpad_right){
                 robot.setRightPower(-0.25);
-                robot.setLeftPower(-0.25);
+                robot.setLeftPower(0.25);
             } else {
                 //Drive Controls
                 robot.setRightPower(-rightStickAverage.getAverage() * driveFactor);
@@ -118,13 +118,11 @@ public class LegolessTeleOp extends LinearOpMode {
 
             if (gamepad2.dpad_up) {
                 sleep(100);
-                currentPosition = robot.relicArm.relicArmServo.getPosition();
                 robot.relicArm.relicArmServo.setPosition(robot.relicArm.relicArmServo.getPosition() - 0.02);
 
                 telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
                 telemetry.update();
             } else if (gamepad2.dpad_down) {
-                currentPosition = robot.relicArm.relicArmServo.getPosition();
                 sleep(100);
                 robot.relicArm.relicArmServo.setPosition(robot.relicArm.relicArmServo.getPosition() + 0.02);
 
