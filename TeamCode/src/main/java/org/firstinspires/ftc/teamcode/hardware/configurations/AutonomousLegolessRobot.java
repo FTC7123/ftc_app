@@ -20,10 +20,8 @@ import org.firstinspires.ftc.teamcode.hardware.components.sensors.FellowshipVufo
 
 public class AutonomousLegolessRobot extends LegolessRobot {
 
-
     public FellowshipUltrasonicArray ultrasonicArray;
     public FellowshipVuforia fellowshipVuforia;
-
 
     public AutonomousLegolessRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         super(hardwareMap, opMode);

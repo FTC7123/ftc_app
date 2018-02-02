@@ -75,66 +75,6 @@ public class SixWheelDriveTrain {
         leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-
-    /*
-    public void drive(double meters, double speed) {
-        meters = meters * 100 / wheelCircumference * 530;
-
-        rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        rightFrontMotor.setTargetPosition((int) meters);
-        rightBackMotor.setTargetPosition((int) meters);
-
-        leftFrontMotor.setTargetPosition((int) meters);
-        leftBackMotor.setTargetPosition((int) meters);
-
-        opMode.telemetry.addData("R1 Position", rightFrontMotor.getTargetPosition());
-        opMode.telemetry.addData("R2 Position", rightBackMotor.getTargetPosition());
-        opMode.telemetry.addData("L1 Position", leftFrontMotor.getTargetPosition());
-        opMode.telemetry.addData("L2 Position", leftBackMotor.getTargetPosition());
-
-        opMode.telemetry.update();
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        rightFrontMotor.setPower(speed);
-        rightBackMotor.setPower(speed);
-
-        leftFrontMotor.setPower(speed);
-        leftBackMotor.setPower(speed);
-
-        while (rightFrontMotor.isBusy() && rightBackMotor.isBusy() && leftFrontMotor.isBusy() && leftBackMotor.isBusy() && opMode.opModeIsActive()) {
-            opMode.telemetry.addData("R1", rightFrontMotor.getCurrentPosition());
-            opMode.telemetry.addData("R2", rightBackMotor.getCurrentPosition());
-            opMode.telemetry.addData("L1", leftFrontMotor.getCurrentPosition());
-            opMode.telemetry.addData("L2", leftBackMotor.getCurrentPosition());
-
-            opMode.telemetry.update();
-        }
-
-        rightFrontMotor.setPower(0);
-        rightBackMotor.setPower(0);
-
-        leftFrontMotor.setPower(0);
-        leftBackMotor.setPower(0);
-    }
-    */
-
-
     public void drive(double meters, double speed) {
         meters = meters * 100 / wheelCircumference * 530;
 
@@ -195,42 +135,6 @@ public class SixWheelDriveTrain {
         opMode.sleep(100);
     }
 
-
-    /*
-    public void turnRight(double degrees, double speed) {
-        degrees = degrees * tickPerDegree;
-
-        resetDriveEncoders();
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        rightFrontMotor.setTargetPosition((int) -degrees);
-        rightBackMotor.setTargetPosition((int) -degrees);
-        leftFrontMotor.setTargetPosition((int) degrees);
-        leftBackMotor.setTargetPosition((int) degrees);
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        rightFrontMotor.setPower(speed);
-        rightBackMotor.setPower(speed);
-        leftFrontMotor.setPower(speed);
-        leftBackMotor.setPower(speed);
-
-        while (rightFrontMotor.isBusy() && rightBackMotor.isBusy() && leftFrontMotor.isBusy() && leftBackMotor.isBusy() && opMode.opModeIsActive()) {
-        }
-
-        setRightPower(0);
-        setLeftPower(0);
-    }
-    */
-
-
     public void turnRight(double degrees, double speed){
         degrees = degrees * tickPerDegree;
 
@@ -270,42 +174,6 @@ public class SixWheelDriveTrain {
         setRightPower(0);
         setLeftPower(0);
     }
-
-
-    /*
-    public void turnLeft(double degrees, double speed) {
-        degrees = degrees * tickPerDegree;
-
-        resetDriveEncoders();
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        rightFrontMotor.setTargetPosition((int) degrees);
-        rightBackMotor.setTargetPosition((int) degrees);
-        leftFrontMotor.setTargetPosition((int) -degrees);
-        leftBackMotor.setTargetPosition((int) -degrees);
-
-        rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        rightBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftBackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        rightFrontMotor.setPower(speed);
-        rightBackMotor.setPower(speed);
-        leftFrontMotor.setPower(speed);
-        leftBackMotor.setPower(speed);
-
-        while (rightFrontMotor.isBusy() && rightBackMotor.isBusy() && leftFrontMotor.isBusy() && leftBackMotor.isBusy() && opMode.opModeIsActive()) {
-        }
-
-        setRightPower(0);
-        setLeftPower(0);
-    }
-    */
-
 
     public void turnLeft(double degrees, double speed) {
         degrees = degrees * tickPerDegree;

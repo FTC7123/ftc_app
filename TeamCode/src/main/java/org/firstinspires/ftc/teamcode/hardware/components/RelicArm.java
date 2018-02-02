@@ -52,15 +52,11 @@ public class RelicArm {
 
     public void moveDown() {
         currentPosition = relicArmServo.getPosition();
-        //Ensures the servo isn't set to a position greater than 1
-        // newServoPosition = currentPosition + armAccuracy;
         relicArmServo.setPosition(currentPosition + 0.02);
     }
 
     public void moveUp() {
         currentPosition = relicArmServo.getPosition();
-        //Ensures the servo isn't set to a position less than 0
-        //newServoPosition = currentPosition - armAccuracy;
         relicArmServo.setPosition(currentPosition - 0.02);
 
     }
