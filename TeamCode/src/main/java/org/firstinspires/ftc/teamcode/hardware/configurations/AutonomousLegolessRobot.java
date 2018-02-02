@@ -68,7 +68,7 @@ public class AutonomousLegolessRobot extends LegolessRobot {
         harvester.closeHarvester();
         opMode.sleep(100);
         harvester.harvesterWinch.setPower(0.5);
-        opMode.sleep(1000);
+        opMode.sleep(750);
         harvester.harvesterWinch.setPower(0);
         opMode.sleep(250);
     }
@@ -88,11 +88,6 @@ public class AutonomousLegolessRobot extends LegolessRobot {
 
         jewelArm.testColor();
 
-        opMode.telemetry.addData("Red Value", jewelArm.colorSensor.red());
-        opMode.telemetry.addData("Blue Value", jewelArm.colorSensor.blue());
-        opMode.telemetry.update();
-
-
         if (jewelArm.colorRecorded == jewelArm.COLOR_RED) {
             turnRight(10, 0.1);
             jewelArm.setJewelArmUp();
@@ -111,11 +106,6 @@ public class AutonomousLegolessRobot extends LegolessRobot {
         opMode.sleep(500);
 
         jewelArm.testColor();
-
-        opMode.telemetry.addData("Red Value", jewelArm.colorSensor.red());
-        opMode.telemetry.addData("Blue Value", jewelArm.colorSensor.blue());
-        opMode.telemetry.update();
-
 
         if (jewelArm.colorRecorded == jewelArm.COLOR_RED) {
             turnLeft(10, 0.1);
