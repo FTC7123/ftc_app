@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
 /**
  * Created by FTC 7123 on 1/27/2018.
  */
-@Autonomous(name = "v2 Blue Stone Two - Jewel, Basic Glyph, Park", group = "Blue Stone Two")
+@Autonomous(name = "Blue Stone Two - Jewel, Basic Glyph, Park", group = "Blue Stone Two")
 public class BlueStoneTwoGlyphPark extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {

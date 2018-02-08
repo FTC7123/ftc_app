@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.autonomous.blue.stone2;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegolessRobot;
@@ -8,6 +9,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
 /**
  * Created by FTC 7123 on 1/23/2018.
  */
+@Disabled
 @Autonomous(name = "Blue Stone Two - Jewel, Basic Glyph, Park", group = "Blue Stone Two")
 public class OldBlueStoneTwoJewelGlyphPark extends LinearOpMode {
     @Override
