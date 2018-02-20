@@ -117,17 +117,11 @@ public class LegolessTeleOp extends LinearOpMode {
             }
 
             if (gamepad2.dpad_up) {
-                sleep(100);
+                sleep(35);
                 robot.relicArm.relicArmServo.setPosition(robot.relicArm.relicArmServo.getPosition() - 0.02);
-
-                telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
-                telemetry.update();
             } else if (gamepad2.dpad_down) {
-                sleep(100);
+                sleep(35);
                 robot.relicArm.relicArmServo.setPosition(robot.relicArm.relicArmServo.getPosition() + 0.02);
-
-                telemetry.addData("Current Position", robot.relicArm.relicArmServo.getPosition());
-                telemetry.update();
             } else {
             }
 

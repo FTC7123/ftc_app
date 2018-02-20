@@ -33,7 +33,7 @@ public class RelicArm {
         relicArmServo = hardwareMap.servo.get("relicArmServo");
         relicClawServo = hardwareMap.servo.get("relicClawServo");
 
-        setRelicArm(0.72);
+        setRelicArm(1);
         setRelicClaw(POSITION_CLOSED);
     }
 

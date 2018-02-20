@@ -18,7 +18,7 @@ public class JewelArm {
     public static final boolean POSITION_UP = false;
     public static final boolean POSITION_DOWN = true;
 
-    public static final double JEWEL_ARM_UP = 0.95;
+    public static final double JEWEL_ARM_UP = 1;
     public static final double JEWEL_ARM_DOWN = 0.25;
 
     public static final boolean COLOR_RED = true;

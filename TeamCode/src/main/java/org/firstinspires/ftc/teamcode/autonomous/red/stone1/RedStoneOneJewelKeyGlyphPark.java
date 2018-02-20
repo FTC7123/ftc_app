@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.autonomous.red.stone1;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.hardware.components.JewelArm;
@@ -9,7 +10,8 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
 /**
  * Created by FTC 7123 on 1/9/2018.
  */
-@Autonomous(name = "Red Stone 1 Jewel, Key, Glyph, Park")
+@Autonomous(name = "Red Stone One Jewel, Key, Glyph, Park")
+@Disabled
 public class RedStoneOneJewelKeyGlyphPark extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {

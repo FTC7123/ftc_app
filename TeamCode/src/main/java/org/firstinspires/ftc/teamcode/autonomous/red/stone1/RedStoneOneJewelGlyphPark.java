@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
 /**
  * Created by FTC 7123 on 1/13/2018.
  */
-@Autonomous(name = "Red Stone 1 - Jewel, Simple Glyph, Park")
+@Autonomous(name = "Red Stone One - Jewel, Simple Glyph, Park")
 public class RedStoneOneJewelGlyphPark extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
@@ -25,10 +25,6 @@ public class RedStoneOneJewelGlyphPark extends LinearOpMode {
 
         robot.scoreGlyph(0.2, 0.1);
 
-        robot.drive(-0.06, 0.2);
-
-        robot.turnRight(10, 0.2);
-
-        robot.drive(-0.10, 0.2);
+        robot.drive(-0.03, 0.2);
     }
 }

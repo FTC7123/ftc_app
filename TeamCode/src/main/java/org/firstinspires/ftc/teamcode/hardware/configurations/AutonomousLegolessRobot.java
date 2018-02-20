@@ -43,11 +43,11 @@ public class AutonomousLegolessRobot extends LegolessRobot {
     }
 
     public void parkRedStoneOne() {
-        drive(-0.90, 0.2);
+        drive(-0.98, 0.2);
     }
 
     public void parkBlueStoneOne() {
-        drive(0.90, 0.15);
+        drive(1.12, 0.15);
     }
 
     public void parkBlueStoneTwo() {
@@ -86,6 +86,10 @@ public class AutonomousLegolessRobot extends LegolessRobot {
 
         jewelArm.testColor();
 
+        opMode.telemetry.addData("Red", jewelArm.colorSensor.red());
+        opMode.telemetry.addData("Blue", jewelArm.colorSensor.blue());
+        opMode.telemetry.update();
+
         if (jewelArm.colorRecorded == jewelArm.COLOR_RED) {
             turnRight(10, 0.1);
             jewelArm.setJewelArmUp();
@@ -104,6 +108,10 @@ public class AutonomousLegolessRobot extends LegolessRobot {
         opMode.sleep(500);
 
         jewelArm.testColor();
+
+        opMode.telemetry.addData("Red", jewelArm.colorSensor.red());
+        opMode.telemetry.addData("Blue", jewelArm.colorSensor.blue());
+        opMode.telemetry.update();
 
         if (jewelArm.colorRecorded == jewelArm.COLOR_RED) {
             turnLeft(10, 0.1);

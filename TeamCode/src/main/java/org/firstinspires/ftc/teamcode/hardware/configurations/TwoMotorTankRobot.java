@@ -15,7 +15,7 @@ public class TwoMotorTankRobot{
 
     public LinearOpMode opMode;
 
-    public void initialize(HardwareMap hardwareMap, LinearOpMode opMode){
+    public TwoMotorTankRobot(HardwareMap hardwareMap, LinearOpMode opMode) {
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
 

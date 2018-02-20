@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.hardware.configurations.AutonomousLegoless
  */
 
 @Autonomous(name = "Color Sensor Test")
-@Disabled
 public class ColorSensorTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {

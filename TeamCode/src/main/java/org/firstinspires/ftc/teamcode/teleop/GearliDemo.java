@@ -6,43 +6,35 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.teamcode.hardware.components.SixWheelDriveTrain;
+import org.firstinspires.ftc.teamcode.hardware.configurations.TwoMotorTankRobot;
+
 /**
  * Created by fello on 9/12/2017.
  */
-@TeleOp(name="Gearli Demo")
+@TeleOp(name = "Gearli Demo w/ Arm")
 public class GearliDemo extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
+        TwoMotorTankRobot robot = new TwoMotorTankRobot(hardwareMap, this);
+
         Servo handServo;
-
         handServo = hardwareMap.servo.get("handServo");
-
-        DcMotor rightMotor1 = hardwareMap.dcMotor.get("rightMotor1");
-        DcMotor rightMotor2 = hardwareMap.dcMotor.get("rightMotor2");
-        DcMotor leftMotor1 = hardwareMap.dcMotor.get("leftMotor1");
-        DcMotor leftMotor2 = hardwareMap.dcMotor.get("leftMotor2");
-
-        leftMotor1.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftMotor2.setDirection(DcMotorSimple.Direction.REVERSE);
-
-        handServo.setPosition(0.25);
+        handServo.setPosition(0.5);
 
         waitForStart();
 
-        while(opModeIsActive()){
-            rightMotor1.setPower(gamepad1.right_stick_y);
-            rightMotor2.setPower(gamepad1.right_stick_y);
-            leftMotor1.setPower(gamepad1.left_stick_y);
-            leftMotor2.setPower(gamepad1.left_stick_y);
+        while (opModeIsActive()) {
+            robot.rightMotor.setPower(gamepad1.right_stick_y);
+            robot.leftMotor.setPower(gamepad1.left_stick_y);
 
-            if (gamepad1.a){
-                handServo.setPosition(0);
-                sleep(750);
+            if (gamepad2.a) {
+                handServo.setPosition(0.25);
+                sleep(300);
+                handServo.setPosition(0.75);
+                sleep(300);
                 handServo.setPosition(0.5);
-                sleep(750);
-            }  else {
-                handServo.setPosition(0.0);
             }
         }
     }
